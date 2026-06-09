@@ -1,0 +1,758 @@
+/* Arcana ornamental tarot frame — overlay decoration, pure CSS */
+
+.arcana-frame {
+  --frame-unit: clamp(6px, 1.15vw, 9px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  color: #e8e4dc;
+  font-size: var(--frame-unit);
+  isolation: isolate;
+}
+
+/* Content fills the card; frame draws on top */
+.arcana-frame-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.arcana-frame-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.arcana-frame-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 120px 120px;
+  mix-blend-mode: overlay;
+}
+
+/* ── Borders (thin rounded rects, not a heavy box) ── */
+
+.outer-border {
+  position: absolute;
+  inset: 3.5% 3.5% 3.5% 3.5%;
+  border-left: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  border-radius: 2.5%;
+  opacity: 0.9;
+}
+
+.outer-border::before,
+.outer-border::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: calc(50% - 9%);
+  height: 1px;
+  background: currentColor;
+}
+
+.outer-border::before {
+  left: 0;
+}
+
+.outer-border::after {
+  right: 0;
+}
+
+.inner-border {
+  position: absolute;
+  inset: 8% 8% 8% 8%;
+  border: 1px solid currentColor;
+  border-radius: 1.8%;
+  opacity: 0.68;
+}
+
+.outer-border-corner-dots {
+  position: absolute;
+  opacity: 0.5;
+}
+
+.outer-border-corner-dots-tl {
+  top: 3.5%;
+  left: 3.5%;
+  width: 10%;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    currentColor 0 1px,
+    transparent 1px 2.5px
+  );
+}
+
+.outer-border-corner-dots-tr {
+  top: 3.5%;
+  right: 3.5%;
+  width: 10%;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    currentColor 0 1px,
+    transparent 1px 2.5px
+  );
+}
+
+.outer-border-corner-dots-bl {
+  bottom: 3.5%;
+  left: 3.5%;
+  width: 10%;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    currentColor 0 1px,
+    transparent 1px 2.5px
+  );
+}
+
+.outer-border-corner-dots-br {
+  bottom: 3.5%;
+  right: 3.5%;
+  width: 10%;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    currentColor 0 1px,
+    transparent 1px 2.5px
+  );
+}
+
+.outer-border-side-dots {
+  position: absolute;
+  width: 1px;
+  opacity: 0.42;
+  background: repeating-linear-gradient(
+    to bottom,
+    currentColor 0 1px,
+    transparent 1px 2.5px
+  );
+}
+
+.outer-border-side-dots-left {
+  top: 3.5%;
+  left: 3.5%;
+  height: 10%;
+}
+
+.outer-border-side-dots-right {
+  top: 3.5%;
+  right: 3.5%;
+  height: 10%;
+}
+
+.outer-border-side-dots-left-bottom {
+  bottom: 3.5%;
+  left: 3.5%;
+  height: 10%;
+}
+
+.outer-border-side-dots-right-bottom {
+  bottom: 3.5%;
+  right: 3.5%;
+  height: 10%;
+}
+
+/* ── Corner ornaments (Art Deco stepped L + diagonal + notches) ── */
+
+.corner-ornament {
+  position: absolute;
+  width: 15%;
+  height: 15%;
+  opacity: 0.92;
+}
+
+.corner-top-left {
+  top: 3.5%;
+  left: 3.5%;
+}
+
+.corner-top-right {
+  top: 3.5%;
+  right: 3.5%;
+  transform: scaleX(-1);
+}
+
+.corner-bottom-left {
+  bottom: 3.5%;
+  left: 3.5%;
+  transform: scaleY(-1);
+}
+
+.corner-bottom-right {
+  bottom: 3.5%;
+  right: 3.5%;
+  transform: scale(-1);
+}
+
+.corner-outer-arm {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: currentColor;
+}
+
+.corner-outer-arm-h {
+  width: 88%;
+  height: 1px;
+}
+
+.corner-outer-arm-v {
+  width: 1px;
+  height: 88%;
+}
+
+.corner-inner-arm {
+  position: absolute;
+  background: currentColor;
+  opacity: 0.88;
+}
+
+.corner-inner-arm-h {
+  top: 24%;
+  left: 24%;
+  width: 52%;
+  height: 1px;
+}
+
+.corner-inner-arm-v {
+  top: 24%;
+  left: 24%;
+  width: 1px;
+  height: 52%;
+}
+
+.corner-diagonal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 62%;
+  background: currentColor;
+  transform-origin: top left;
+  transform: rotate(45deg);
+  opacity: 0.82;
+}
+
+.corner-notch {
+  position: absolute;
+  background: currentColor;
+  opacity: 0.78;
+}
+
+.corner-notch-h {
+  top: 58%;
+  left: 0;
+  width: 22%;
+  height: 1px;
+}
+
+.corner-notch-v {
+  top: 0;
+  left: 58%;
+  width: 1px;
+  height: 22%;
+}
+
+.corner-vertex-square {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0.5em;
+  height: 0.5em;
+  border: 1px solid currentColor;
+  opacity: 0.8;
+}
+
+.corner-tick {
+  position: absolute;
+  width: 1px;
+  height: 0.35em;
+  background: currentColor;
+  transform-origin: top left;
+  opacity: 0.55;
+}
+
+.corner-tick-a {
+  top: 0;
+  left: 0;
+  transform: rotate(45deg);
+}
+
+.corner-tick-b {
+  top: 0.12em;
+  left: 0.55em;
+  height: 0.28em;
+  transform: rotate(-45deg);
+}
+
+.corner-tick-c {
+  top: 0.55em;
+  left: 0.12em;
+  height: 0.28em;
+  transform: rotate(-45deg);
+}
+
+.corner-dot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.58;
+}
+
+.corner-dot-h1 {
+  top: 0;
+  left: 38%;
+}
+
+.corner-dot-h2 {
+  top: 0;
+  left: 68%;
+}
+
+.corner-dot-v1 {
+  top: 38%;
+  left: 0;
+}
+
+.corner-dot-v2 {
+  top: 68%;
+  left: 0;
+}
+
+.corner-dot-diag {
+  top: 14%;
+  left: 14%;
+  opacity: 0.42;
+}
+
+/* ── Side lines ── */
+
+.side-line {
+  position: absolute;
+  top: 16%;
+  width: 1px;
+  height: 68%;
+  background: currentColor;
+  opacity: 0.76;
+}
+
+.side-line-left {
+  left: 10.5%;
+}
+
+.side-line-right {
+  right: 10.5%;
+}
+
+.side-markings {
+  position: absolute;
+  top: 17%;
+  width: 3.5%;
+  height: 66%;
+  opacity: 0.48;
+}
+
+.side-markings-left {
+  left: 6%;
+}
+
+.side-markings-right {
+  right: 6%;
+}
+
+.side-markings::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: repeating-linear-gradient(
+    to bottom,
+    currentColor 0 1px,
+    transparent 1px 4px
+  );
+  opacity: 0.52;
+}
+
+.side-markings-left::before {
+  left: 0;
+}
+
+.side-markings-right::before {
+  right: 0;
+}
+
+.side-markings::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0 7px,
+    currentColor 7px 8px,
+    transparent 8px 12px
+  );
+  opacity: 0.38;
+}
+
+.side-markings-left::after {
+  left: 45%;
+}
+
+.side-markings-right::after {
+  right: 45%;
+}
+
+.side-tick {
+  position: absolute;
+  height: 1px;
+  width: 0.5em;
+  background: currentColor;
+  opacity: 0.42;
+}
+
+.side-tick-left-1 {
+  left: 5.2%;
+  top: 29%;
+}
+
+.side-tick-left-2 {
+  left: 5.2%;
+  top: 49%;
+}
+
+.side-tick-left-3 {
+  left: 5.2%;
+  top: 69%;
+}
+
+.side-tick-right-1 {
+  right: 5.2%;
+  top: 29%;
+}
+
+.side-tick-right-2 {
+  right: 5.2%;
+  top: 49%;
+}
+
+.side-tick-right-3 {
+  right: 5.2%;
+  top: 69%;
+}
+
+/* ── Moon phase columns ── */
+
+.moon-phase-column {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+  transform: translateY(-50%);
+  opacity: 0.8;
+}
+
+.moon-phase-column-left {
+  left: 9%;
+}
+
+.moon-phase-column-right {
+  right: 9%;
+}
+
+.moon-phase-column-right .moon-phase-waxing-crescent,
+.moon-phase-column-right .moon-phase-waning-crescent,
+.moon-phase-column-right .moon-phase-half-waxing,
+.moon-phase-column-right .moon-phase-half-waning {
+  transform: scaleX(-1);
+}
+
+.moon-phase {
+  display: block;
+  flex-shrink: 0;
+}
+
+.moon-phase-waxing-crescent {
+  width: 0.62em;
+  height: 0.62em;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  box-shadow: 0.13em 0 0 0 currentColor;
+}
+
+.moon-phase-half-waxing {
+  width: 0.62em;
+  height: 0.62em;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  background: linear-gradient(to right, currentColor 50%, transparent 50%);
+}
+
+.moon-phase-full {
+  width: 0.62em;
+  height: 0.62em;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+}
+
+.moon-phase-half-waning {
+  width: 0.62em;
+  height: 0.62em;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  background: linear-gradient(to left, currentColor 50%, transparent 50%);
+}
+
+.moon-phase-waning-crescent {
+  width: 0.62em;
+  height: 0.62em;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  box-shadow: -0.13em 0 0 0 currentColor;
+}
+
+/* ── Eight-point star ── */
+
+.eight-point-star {
+  position: relative;
+  width: 1.6em;
+  height: 1.6em;
+}
+
+.eight-point-star-diamond {
+  position: absolute;
+  inset: 0;
+}
+
+.eight-point-star-diamond::before,
+.eight-point-star-diamond::after {
+  content: "";
+  position: absolute;
+  inset: 18%;
+  border: 1px solid currentColor;
+}
+
+.eight-point-star-diamond::after {
+  transform: rotate(45deg);
+}
+
+.eight-point-star-ray {
+  position: absolute;
+  background: currentColor;
+}
+
+.eight-point-star-ray-n {
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 28%;
+  transform: translateX(-50%);
+}
+
+.eight-point-star-ray-s {
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  height: 28%;
+  transform: translateX(-50%);
+}
+
+.eight-point-star-ray-e {
+  right: 0;
+  top: 50%;
+  height: 1px;
+  width: 28%;
+  transform: translateY(-50%);
+}
+
+.eight-point-star-ray-w {
+  left: 0;
+  top: 50%;
+  height: 1px;
+  width: 28%;
+  transform: translateY(-50%);
+}
+
+.top-star {
+  position: absolute;
+  top: 1.2%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  opacity: 0.94;
+}
+
+.top-star .eight-point-star {
+  width: 2.4em;
+  height: 2.4em;
+}
+
+.top-star .eight-point-star-ray-n,
+.top-star .eight-point-star-ray-s {
+  height: 40%;
+}
+
+.top-star .eight-point-star-ray-e,
+.top-star .eight-point-star-ray-w {
+  width: 24%;
+}
+
+.star-mark {
+  position: absolute;
+  z-index: 2;
+  opacity: 0.76;
+}
+
+.star-mark-side-left {
+  top: 22%;
+  left: 10.5%;
+  transform: translateX(-50%);
+}
+
+.star-mark-side-right {
+  top: 22%;
+  right: 10.5%;
+  transform: translateX(50%);
+}
+
+.star-mark .eight-point-star {
+  width: 0.9em;
+  height: 0.9em;
+}
+
+/* ── Plus marks ── */
+
+.plus-mark {
+  position: absolute;
+  width: 0.5em;
+  height: 0.5em;
+  opacity: 0.7;
+}
+
+.plus-mark-left {
+  top: 77%;
+  left: 10.5%;
+  transform: translate(-50%, -50%);
+}
+
+.plus-mark-right {
+  top: 77%;
+  right: 10.5%;
+  transform: translate(50%, -50%);
+}
+
+.plus-mark-h,
+.plus-mark-v {
+  position: absolute;
+  background: currentColor;
+}
+
+.plus-mark-h {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: translateY(-50%);
+}
+
+.plus-mark-v {
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  transform: translateX(-50%);
+}
+
+/* ── Bottom divider ── */
+
+.bottom-divider {
+  position: absolute;
+  bottom: 7%;
+  left: 16%;
+  right: 16%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em;
+  opacity: 0.84;
+}
+
+.bottom-divider-line {
+  flex: 1;
+  height: 1px;
+  max-width: 44%;
+}
+
+.bottom-divider-line-left {
+  background: repeating-linear-gradient(
+    90deg,
+    currentColor 0 6px,
+    transparent 6px 7px,
+    currentColor 7px 14px,
+    transparent 14px 15px
+  );
+  opacity: 0.85;
+}
+
+.bottom-divider-line-right {
+  background: repeating-linear-gradient(
+    90deg,
+    currentColor 0 5px,
+    transparent 5px 6px,
+    currentColor 6px 12px,
+    transparent 12px 14px
+  );
+  opacity: 0.75;
+}
+
+.bottom-divider-star .eight-point-star {
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.bottom-divider-splatter {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background: currentColor;
+}
+
+.bottom-divider-splatter-1 {
+  bottom: 6.8%;
+  left: calc(50% - 1.1em);
+  opacity: 0.52;
+}
+
+.bottom-divider-splatter-2 {
+  bottom: 7.2%;
+  left: calc(50% + 0.95em);
+  opacity: 0.38;
+}
+
+.bottom-divider-splatter-3 {
+  bottom: 6.9%;
+  left: calc(50% - 0.35em);
+  width: 2px;
+  opacity: 0.32;
+}
