@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" fill="none">
+  <rect x="24" y="20" width="252" height="360" stroke="#334EFF" stroke-width="1" opacity="0.35" stroke-dasharray="4 4"/>
+  <ellipse cx="150" cy="155" rx="48" ry="62" stroke="#334EFF" stroke-width="0.8" opacity="0.25"/>
+  <path d="M118 250 C150 228 182 250 150 290 C118 250 118 250 118 250Z" stroke="#6B85FF" stroke-width="0.8" opacity="0.2"/>
+  <text x="150" y="340" text-anchor="middle" fill="#334EFF" font-family="monospace" font-size="8" letter-spacing="2" opacity="0.55">ANNAESTHEESIA</text>
+  <text x="150" y="358" text-anchor="middle" fill="#9AA8FF" font-family="monospace" font-size="6" letter-spacing="2" opacity="0.4">PORTRAIT</text>
+</svg>

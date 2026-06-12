@@ -16,6 +16,20 @@
   --accent-violet: #9b5fff;
   --accent-electric-blue: #57b8ff;
   --accent-ice-cyan: #6ef7ff;
+  --accent-bloom-pink: #fe72d8;
+  --accent-neon-green: #89e46b;
+  --accent-royal-blue: #334eff;
+  --accent-heliotrope: #8f77f8;
+
+  /* Arcana card key colors — swap :root values above to test palette-wide */
+  --arcana-anarchist: var(--accent-bloom-pink);
+  --arcana-shapeshifter: var(--accent-neon-green);
+  --arcana-sorceress: var(--accent-heliotrope);
+  --arcana-catalyst: var(--accent-royal-blue);
+  --arcana-anarchist-muted: color-mix(in srgb, var(--arcana-anarchist) 62%, white);
+  --arcana-shapeshifter-muted: color-mix(in srgb, var(--arcana-shapeshifter) 62%, white);
+  --arcana-sorceress-muted: color-mix(in srgb, var(--arcana-sorceress) 62%, white);
+  --arcana-catalyst-muted: color-mix(in srgb, var(--arcana-catalyst) 62%, white);
 }
 
 @theme inline {
@@ -25,6 +39,10 @@
   --color-accent-pink: var(--accent-pink);
   --color-accent-green: var(--accent-green);
   --color-accent-blue: var(--accent-blue);
+  --color-accent-bloom-pink: var(--accent-bloom-pink);
+  --color-accent-neon-green: var(--accent-neon-green);
+  --color-accent-royal-blue: var(--accent-royal-blue);
+  --color-accent-heliotrope: var(--accent-heliotrope);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-display: var(--font-libre-baskerville);
@@ -386,6 +404,43 @@ body {
   overflow: hidden;
 }
 
+/* Accent utilities — consume --arcana-accent* set per card via getArcanaAccentVars */
+.arcana-accent-text {
+  color: var(--arcana-accent);
+}
+
+.arcana-accent-text-faint {
+  color: var(--arcana-accent-faint);
+}
+
+.arcana-accent-text-muted {
+  color: var(--arcana-accent-muted);
+}
+
+.arcana-accent-border {
+  border-color: var(--arcana-accent);
+}
+
+.arcana-accent-border-subtle {
+  border-color: var(--arcana-accent-subtle);
+}
+
+.arcana-accent-border-chrome {
+  border-color: var(--arcana-accent-chrome);
+}
+
+.arcana-accent-bg {
+  background-color: var(--arcana-accent);
+}
+
+.arcana-accent-stroke {
+  stroke: var(--arcana-accent);
+}
+
+.arcana-accent-fill {
+  fill: var(--arcana-accent);
+}
+
 .arcana-archive-body {
   padding: 7px;
   background: #050505;
@@ -469,15 +524,44 @@ body {
 }
 
 .arcana-tarot-frame {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
   border: 1px solid var(--arcana-border, rgba(255, 255, 255, 0.45));
   box-shadow:
     inset 0 0 0 1px #050505,
-    inset 0 0 0 2px var(--arcana-border, rgba(255, 255, 255, 0.2));
+    inset 0 0 0 2px var(--arcana-accent-subtle, rgba(255, 255, 255, 0.2));
+  min-height: 0;
 }
 
 .arcana-editorial-rule {
   height: 1px;
   opacity: 0.65;
+}
+
+.arcana-illustration {
+  position: relative;
+  width: 100%;
+  min-height: 0;
+}
+
+.arcana-illustration__chart {
+  position: absolute;
+  inset: 1em;
+  pointer-events: none;
+}
+
+.arcana-symbol-slot {
+  position: absolute;
+  inset: 1em;
+  z-index: 1;
+}
+
+.arcana-symbol-img,
+.arcana-symbol-fallback {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .arcana-symbol-img {

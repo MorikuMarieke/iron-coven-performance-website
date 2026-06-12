@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { CTAButton } from "@/components/ui/CTAButton";
-
-const HERO_TITLE = "A ritual of body, shadow and becoming.";
+import { event } from "@/data/event";
 
 function RitualSigil() {
   return (
@@ -46,26 +45,31 @@ export function Hero() {
 
         <div className="relative flex min-h-0 flex-col justify-start">
           <p className="mb-6 font-sans text-[10px] uppercase tracking-[0.4em] text-[#F5F5F5]/55 sm:mb-8 sm:text-xs">
-            Underground performance collective
+            {event.subtitle}
           </p>
 
           <div className="mb-4 flex min-w-0 items-start gap-3 sm:mb-5">
             <RitualSigil />
             <h1
-              data-text={HERO_TITLE}
+              data-text={event.title}
               className="hero-title-poster hero-title-dream hero-title-aberration relative isolate min-w-0 flex-1 font-unifraktur tracking-tight text-balance break-words text-[#F5F5F5]"
             >
-              {HERO_TITLE}
+              {event.title}
             </h1>
           </div>
 
           <hr className="mb-6 w-full max-w-xs border-[#F5F5F5]/20" />
 
-          <p className="max-w-md font-sans text-sm leading-relaxed text-[#F5F5F5]/80 md:text-base">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Through
-            pole, aerial silk, and embodied ritual — a séance of flesh, shadow,
-            and feminine power.
+          <p className="mb-8 max-w-md font-sans text-sm leading-relaxed text-[#F5F5F5]/80 md:mb-10 md:text-base">
+            {event.tagline}
           </p>
+
+          <div className="flex flex-col gap-3 font-mono text-[10px] uppercase tracking-[0.28em] text-[#F5F5F5]/65 sm:text-xs">
+            <p>
+              <time dateTime={event.date.iso}>{event.date.display}</time>
+            </p>
+            <p>{event.location.display}</p>
+          </div>
         </div>
       </div>
 

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <ellipse cx="100" cy="108" rx="8" ry="14" stroke="#89E46B" stroke-width="1" opacity="0.5"/>
+  <path d="M100 98 C70 70 42 88 58 108 C72 122 88 118 100 108" stroke="#89E46B" stroke-width="1" opacity="0.4"/>
+  <path d="M100 98 C130 70 158 88 142 108 C128 122 112 118 100 108" stroke="#89E46B" stroke-width="1" opacity="0.4"/>
+  <path d="M96 82 L100 72 L104 82" stroke="#89E46B" stroke-width="0.8" opacity="0.35"/>
+  <text x="100" y="168" text-anchor="middle" fill="#89E46B" font-family="monospace" font-size="7" letter-spacing="2" opacity="0.5">SYMBOL</text>
+</svg>

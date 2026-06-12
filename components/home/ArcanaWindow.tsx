@@ -2,6 +2,7 @@
 
 import { useCallback } from "react";
 import { type ArcanaPerformer } from "@/data/performers";
+import { getArcanaAccentVars } from "@/data/arcana-colors";
 import { ArcanaArchiveChrome } from "@/components/arcana/ArcanaArchiveChrome";
 import { ArcanaArchiveFooter } from "@/components/arcana/ArcanaArchiveFooter";
 import { getArchiveFilename } from "@/components/arcana/arcanaUtils";
@@ -18,6 +19,7 @@ export function ArcanaWindow({
   onFlip: () => void;
 }) {
   const { accent } = performer;
+  const accentVars = getArcanaAccentVars(accent);
 
   const handleFlip = useCallback(
     (e?: React.MouseEvent) => {
@@ -38,20 +40,8 @@ export function ArcanaWindow({
   );
 
   return (
-    <div
-      className="arcana-archive-window relative w-full rounded-sm"
-      style={
-        {
-          "--arcana-border": accent.border,
-          "--arcana-accent": accent.primary,
-        } as React.CSSProperties
-      }
-    >
-      <ArcanaArchiveChrome
-        filename={getArchiveFilename(performer)}
-        accent={accent.primary}
-        onFlip={handleFlip}
-      />
+    <div className="arcana-archive-window relative w-full rounded-sm" style={accentVars}>
+      <ArcanaArchiveChrome filename={getArchiveFilename(performer)} onFlip={handleFlip} />
 
       <div className="arcana-archive-body">
         <div
@@ -63,23 +53,15 @@ export function ArcanaWindow({
           aria-label={`${performer.archetype} — ${flipped ? "show archetype" : "reveal dossier"}`}
           className="arcana-tarot-perspective cursor-pointer rounded-sm focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-white/50"
         >
-          <div
-            className={`arcana-tarot-flip-inner ${flipped ? "is-flipped" : ""}`}
-          >
+          <div className={`arcana-tarot-flip-inner ${flipped ? "is-flipped" : ""}`}>
             <div className="arcana-tarot-face arcana-tarot-front">
-              <div
-                className="arcana-tarot-card flex h-full flex-col overflow-hidden rounded-sm"
-                style={{ borderColor: accent.border }}
-              >
+              <div className="arcana-tarot-card flex h-full flex-col overflow-hidden rounded-sm">
                 <ArcanaFront performer={performer} />
               </div>
             </div>
 
             <div className="arcana-tarot-face arcana-tarot-back">
-              <div
-                className="arcana-tarot-card flex h-full flex-col overflow-hidden rounded-sm"
-                style={{ borderColor: accent.border }}
-              >
+              <div className="arcana-tarot-card flex h-full flex-col overflow-hidden rounded-sm">
                 <ArcanaBack performer={performer} />
               </div>
             </div>
@@ -87,7 +69,7 @@ export function ArcanaWindow({
         </div>
       </div>
 
-      <ArcanaArchiveFooter accent={accent.primary} />
+      <ArcanaArchiveFooter />
     </div>
   );
 }
