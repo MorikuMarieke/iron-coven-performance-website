@@ -13,7 +13,6 @@ export default function Home() {
       <Performers />
       <PracticalInfo />
       <Socials />
-      <Newsletter />
     </main>
   );
 }
