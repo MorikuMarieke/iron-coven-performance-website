@@ -1,3 +1,5 @@
+import { arcanaAccents } from "./arcana-colors";
+
 export type ArcanaAccent = {
   primary: string;
   secondary: string;
@@ -37,18 +39,15 @@ export const performers: ArcanaPerformer[] = [
     name: "Trixxxie",
     romanNumeral: "IX",
     symbol: "broken mirror",
-    symbolSrc: "/images/arcana/broken-mirror.gif",
-    portraitSrc: "/images/arcana/portraits/trixxxie.png",
+    symbolSrc: "/images/arcana/Mirror%20Arcana.svg",
+    portraitSrc: "/images/arcana/portraits/trixxxie.svg",
     subtitle:
       "A BREAKER OF RULES AND STRUCTURES. WILD SPIRIT, TRUTH SPEAKER, DISRUPTOR.",
     theme: "fractured identity · rebellion · distorted reflections",
     accent: {
-      primary: "#FF3FA4",
-      secondary: "#FF7EDB",
+      ...arcanaAccents.anarchist,
       glow: "",
-      border: "#FF3FA4",
       text: "#FFFFFF",
-      panelBorder: "#FF7EDB",
     },
     bio: "Fragmented light, unbroken will — rebellion stitched into every gesture.",
     cardDescription:
@@ -69,18 +68,15 @@ export const performers: ArcanaPerformer[] = [
     name: "Moth",
     romanNumeral: "II",
     symbol: "moth",
-    symbolSrc: "/images/arcana/moth.gif",
-    portraitSrc: "/images/arcana/portraits/moth.png",
+    symbolSrc: "/images/arcana/Moth%20Arcana.svg",
+    portraitSrc: "/images/arcana/portraits/moth.svg",
     subtitle:
       "A CREATURE OF TRANSFORMATION. LIMINAL, METAMORPHIC, DRAWN TO FLAME.",
     theme: "transformation · becoming · liminality",
     accent: {
-      primary: "#9EF5C8",
-      secondary: "#C6F7D6",
+      ...arcanaAccents.shapeshifter,
       glow: "",
-      border: "#9EF5C8",
       text: "#EDEDED",
-      panelBorder: "#C6F7D6",
     },
     bio: "Metamorphosis as ritual — neither shadow nor light, always becoming.",
     cardDescription:
@@ -101,19 +97,15 @@ export const performers: ArcanaPerformer[] = [
     name: "Elena",
     romanNumeral: "XI",
     symbol: "snake",
-    symbolSrc: "/images/arcana/snake.gif",
-    portraitSrc: "/images/arcana/portraits/elena.png",
+    symbolSrc: "/images/arcana/Snake%20Arcana.svg",
+    portraitSrc: "/images/arcana/portraits/elena.svg",
     subtitle:
       "A WEAVER OF SHADOW AND SPELL. ANCIENT KNOWLEDGE, RITUAL POWER, FORBIDDEN ARTS.",
     theme: "ritual · incantation · shadow · arcane knowledge",
     accent: {
-      primary: "#D9D9D9",
-      secondary: "#A764FF",
-      tertiary: "#FF4FCF",
+      ...arcanaAccents.sorceress,
       glow: "",
-      border: "#D9D9D9",
       text: "#FFFFFF",
-      panelBorder: "#A764FF",
     },
     bio: "Silver tongue, serpent grace — spellcraft woven through gesture and gaze.",
     cardDescription:
@@ -134,19 +126,15 @@ export const performers: ArcanaPerformer[] = [
     name: "Annaestheesia",
     romanNumeral: "IV",
     symbol: "comet",
-    symbolSrc: "/images/arcana/comet.gif",
-    portraitSrc: "/images/arcana/portraits/annaestheesia.png",
+    symbolSrc: "/images/arcana/Eclipse%20Arcana.svg",
+    portraitSrc: "/images/arcana/portraits/annaestheesia.svg",
     subtitle:
       "AN AGENT OF IGNITION AND CHANGE. VELOCITY, VOLTAGE, MOMENTUM.",
     theme: "ignition · change · momentum · movement",
     accent: {
-      primary: "#57B8FF",
-      secondary: "#8D72FF",
-      tertiary: "#A5D7FF",
+      ...arcanaAccents.catalyst,
       glow: "",
-      border: "#57B8FF",
       text: "#FFFFFF",
-      panelBorder: "#8D72FF",
     },
     bio: "A comet through the coven — velocity, voltage, transformation.",
     cardDescription:

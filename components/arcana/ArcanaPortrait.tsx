@@ -3,25 +3,13 @@
 import Image from "next/image";
 import { useState } from "react";
 
-export function ArcanaPortrait({
-  src,
-  name,
-  accent,
-}: {
-  src: string;
-  name: string;
-  accent: string;
-}) {
+export function ArcanaPortrait({ src, name }: { src: string; name: string }) {
   const [failed, setFailed] = useState(false);
 
   if (failed) {
     return (
       <div className="arcana-portrait-fallback relative flex h-full min-h-[6rem] flex-col items-center justify-center gap-1.5 p-2">
-        <div
-          className="h-10 w-8 border border-dashed"
-          style={{ borderColor: accent }}
-          aria-hidden="true"
-        />
+        <div className="arcana-accent-border h-10 w-8 border border-dashed" aria-hidden="true" />
         <span className="text-center font-mono text-[7px] uppercase leading-tight tracking-widest text-white/30">
           {name}
         </span>

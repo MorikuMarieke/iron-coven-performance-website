@@ -1,11 +1,9 @@
-export function TitleOrnament({ color }: { color: string }) {
+export function TitleOrnament() {
   return (
-    <div className="mt-2 flex items-center justify-center gap-2 opacity-70" aria-hidden="true">
-      <span className="h-px w-6" style={{ backgroundColor: color }} />
-      <span className="text-[10px]" style={{ color }}>
-        ✦
-      </span>
-      <span className="h-px w-6" style={{ backgroundColor: color }} />
+    <div className="arcana-accent-text mt-2 flex items-center justify-center gap-2 opacity-70" aria-hidden="true">
+      <span className="arcana-accent-bg h-px w-6 opacity-80" />
+      <span className="text-[10px]">✦</span>
+      <span className="arcana-accent-bg h-px w-6 opacity-80" />
     </div>
   );
 }

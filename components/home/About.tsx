@@ -1,12 +1,4 @@
-const keywords = [
-  "ritual",
-  "desire",
-  "transformation",
-  "body",
-  "rebellion",
-  "softness",
-  "shadow",
-];
+import { event } from "@/data/event";
 
 const rotations = [
   "-rotate-2",
@@ -21,6 +13,7 @@ const rotations = [
 export function About() {
   return (
     <section
+      id="concept"
       aria-labelledby="about-heading"
       className="relative border-b border-white/30 px-6 py-20 md:px-12 lg:px-20"
     >
@@ -32,18 +25,15 @@ export function About() {
             id="about-heading"
             className="font-display mb-8 text-3xl font-bold md:text-4xl"
           >
-            The concept
+            {event.concept.heading}
           </h2>
 
           <p className="mb-12 max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in
-            dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed
-            auctor neque eu tellus rhoncus ut eleifend nibh porttitor. This is
-            not a show — it is a séance of flesh and will.
+            {event.concept.body}
           </p>
 
           <ul className="flex flex-wrap gap-3 md:gap-4" role="list">
-            {keywords.map((word, i) => (
+            {event.concept.keywords.map((word, i) => (
               <li
                 key={word}
                 className={`border border-white px-4 py-2 font-mono text-xs uppercase tracking-widest transition-transform hover:scale-105 ${rotations[i % rotations.length]}`}

@@ -2,15 +2,11 @@
 
 import { useState } from "react";
 
-function SymbolFallback({ symbol, color }: { symbol: string; color: string }) {
+function SymbolFallback({ symbol }: { symbol: string }) {
   return (
-    <svg
-      viewBox="0 0 120 120"
-      className="h-auto max-h-[9rem] w-auto max-w-[9rem]"
-      aria-hidden="true"
-    >
-      <circle cx="60" cy="60" r="50" fill="none" stroke={color} strokeWidth="1" opacity="0.4" />
-      <text x="60" y="68" textAnchor="middle" fill={color} fontSize="10" opacity="0.7">
+    <svg viewBox="0 0 120 120" className="arcana-symbol-fallback" aria-hidden="true">
+      <circle cx="60" cy="60" r="50" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.4" />
+      <text x="60" y="68" textAnchor="middle" fill="currentColor" fontSize="10" opacity="0.7">
         {symbol.slice(0, 2).toUpperCase()}
       </text>
     </svg>
@@ -20,28 +16,32 @@ function SymbolFallback({ symbol, color }: { symbol: string; color: string }) {
 export function ArcanaSigil({
   src,
   symbol,
-  color,
   slug,
 }: {
   src: string;
   symbol: string;
-  color: string;
   slug: string;
 }) {
   const [failed, setFailed] = useState(false);
 
   if (failed) {
-    return <SymbolFallback symbol={symbol} color={color} />;
+    return (
+      <div className="arcana-symbol-slot arcana-accent-text">
+        <SymbolFallback symbol={symbol} />
+      </div>
+    );
   }
 
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={src}
-      alt=""
-      onError={() => setFailed(true)}
-      className="arcana-symbol-img h-auto max-h-[9rem] w-auto max-w-[9rem] object-contain"
-      data-slug={slug}
-    />
+    <div className="arcana-symbol-slot">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt=""
+        onError={() => setFailed(true)}
+        className="arcana-symbol-img"
+        data-slug={slug}
+      />
+    </div>
   );
 }
