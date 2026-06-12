@@ -1,26 +1,586 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050505;
+  --foreground: #f5f5f5;
+  --accent-red: #8b1a1a;
+  --accent-pink: #ff006e;
+  --accent-green: #4a5d23;
+  --accent-blue: #5b8db8;
+  --iridescent-mint: #b9e3de;
+  --iridescent-sky: #a9c5eb;
+  --iridescent-lavender: #d2b4de;
+  --iridescent-rose: #fadbd8;
+  --iridescent-warm: #fafae6;
+  --accent-hot-pink: #ff2ea6;
+  --accent-violet: #9b5fff;
+  --accent-electric-blue: #57b8ff;
+  --accent-ice-cyan: #6ef7ff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent-red: var(--accent-red);
+  --color-accent-pink: var(--accent-pink);
+  --color-accent-green: var(--accent-green);
+  --color-accent-blue: var(--accent-blue);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-display: var(--font-libre-baskerville);
+  --font-unifraktur: var(--font-unifraktur-cook);
+  --font-maguntia: var(--font-unifraktur-maguntia);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+}
+
+/* Fixed texture overlays */
+.noise-overlay {
+  position: relative;
+}
+
+.noise-overlay::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+}
+
+.scanlines {
+  position: relative;
+}
+
+.scanlines::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 51;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.015) 2px,
+    rgba(255, 255, 255, 0.015) 4px
+  );
+}
+
+.border-occult {
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15),
+    4px 4px 0 rgba(255, 255, 255, 0.08);
+}
+
+@keyframes glitch {
+  0%,
+  100% {
+    text-shadow:
+      0 0 0 transparent,
+      0 0 0 transparent;
+    transform: translate(0);
+  }
+  20% {
+    text-shadow:
+      -2px 0 rgba(255, 0, 110, 0.4),
+      2px 0 rgba(91, 141, 184, 0.4);
+    transform: translate(-1px, 0);
+  }
+  40% {
+    text-shadow:
+      2px 0 rgba(255, 0, 110, 0.3),
+      -2px 0 rgba(91, 141, 184, 0.3);
+    transform: translate(1px, 0);
+  }
+  60% {
+    text-shadow:
+      -1px 0 rgba(255, 255, 255, 0.2),
+      1px 0 rgba(255, 255, 255, 0.1);
+    transform: translate(0);
+  }
+}
+
+.glitch-text {
+  animation: glitch 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glitch-text {
+    animation: none;
+  }
+}
+
+/* Hero layered atmosphere */
+.hero-layers {
+  position: relative;
+  background-color: #050505;
+}
+
+.hero-left-scrim {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.65) 40%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
+}
+
+.hero-title-poster {
+  font-size: clamp(2.5rem, 7vw, 4rem);
+  line-height: 0.92;
+}
+
+@media (min-width: 768px) {
+  .hero-title-poster {
+    font-size: clamp(2.75rem, 7vw, 6.5rem);
+    line-height: 0.9;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-title-poster {
+    font-size: clamp(3rem, 6.5vw, 7rem);
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-title-poster {
+    font-size: clamp(3rem, 6.5vw, 7rem);
+  }
+}
+
+.hero-layer-dust::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0.12;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='d'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23d)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+.hero-layer-scratches::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0.17;
+  background-image:
+    repeating-linear-gradient(
+      105deg,
+      transparent,
+      transparent 120px,
+      rgba(245, 245, 245, 0.045) 120px,
+      rgba(245, 245, 245, 0.045) 121px
+    ),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='0' y1='80' x2='400' y2='95' stroke='rgba(245,245,245,0.06)' stroke-width='0.5'/%3E%3Cline x1='0' y1='200' x2='400' y2='210' stroke='rgba(245,245,245,0.04)' stroke-width='0.5'/%3E%3Cline x1='0' y1='320' x2='400' y2='305' stroke='rgba(245,245,245,0.05)' stroke-width='0.5'/%3E%3C/svg%3E");
+  background-size: auto, cover;
+}
+
+.hero-layer-wear {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 15% 20%, rgba(250, 250, 230, 0.03) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 80%, rgba(0, 0, 0, 0.35) 0%, transparent 50%),
+    radial-gradient(ellipse at center, transparent 40%, rgba(5, 5, 5, 0.4) 100%);
+}
+
+.hero-layer-scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.035) 2px,
+    rgba(255, 255, 255, 0.035) 4px
+  );
+}
+
+/* Chromatic aberration — ghost layers + soft text-shadow on main title */
+.hero-title-aberration {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-title-aberration::before,
+.hero-title-aberration::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  word-break: break-word;
+  text-wrap: balance;
+}
+
+.hero-title-aberration::before {
+  z-index: -2;
+  color: #6ef7ff;
+  opacity: 0.28;
+  animation: aberrationBefore 16s ease-in-out infinite;
+}
+
+.hero-title-aberration::after {
+  z-index: -1;
+  color: #ff5ccf;
+  opacity: 0.26;
+  animation: aberrationAfter 16s ease-in-out infinite;
+}
+
+@keyframes aberrationBefore {
+  0%,
+  100% {
+    transform: translate(0.6px, 0.15px);
+  }
+  50% {
+    transform: translate(-0.8px, 0.35px);
+  }
+}
+
+@keyframes aberrationAfter {
+  0%,
+  100% {
+    transform: translate(-0.6px, -0.15px);
+  }
+  50% {
+    transform: translate(0.75px, 0.25px);
+  }
+}
+
+@keyframes dreamAberration {
+  0%,
+  100% {
+    text-shadow:
+      0.6px 0 rgba(110, 247, 255, 0.22),
+      -0.6px 0 rgba(155, 95, 255, 0.2),
+      0 0.5px rgba(255, 92, 207, 0.15);
+  }
+  33% {
+    text-shadow:
+      0.7px 0 rgba(87, 184, 255, 0.2),
+      -0.65px 0 rgba(255, 46, 166, 0.18),
+      0 0 rgba(155, 95, 255, 0.14);
+  }
+  66% {
+    text-shadow:
+      0.65px 0 rgba(255, 92, 207, 0.21),
+      -0.7px 0 rgba(110, 247, 255, 0.19),
+      0.4px 0 rgba(87, 184, 255, 0.16);
+  }
+}
+
+.hero-title-dream {
+  animation: dreamAberration 14s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title-aberration::before,
+  .hero-title-aberration::after {
+    animation: none;
+    transform: translate(0.35px, 0);
+    opacity: 0.18;
+  }
+
+  .hero-title-dream {
+    animation: none;
+    text-shadow:
+      0.5px 0 rgba(110, 247, 255, 0.18),
+      -0.5px 0 rgba(155, 95, 255, 0.16);
+  }
+}
+
+.holographic-hover:hover {
+  box-shadow:
+    0 0 14px rgba(185, 227, 222, 0.35),
+    0 0 18px rgba(210, 180, 222, 0.25),
+    0 0 12px rgba(250, 219, 216, 0.2);
+}
+
+.hero-cta-hover {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.hero-cta-hover:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 12px rgba(185, 227, 222, 0.2),
+    0 0 16px rgba(155, 95, 255, 0.15);
+}
+
+.hero-cta-hover.hero-cta-secondary:hover {
+  border-color: rgba(185, 227, 222, 0.5);
+  box-shadow:
+    0 0 14px rgba(169, 197, 235, 0.25),
+    0 0 10px rgba(110, 247, 255, 0.15);
+}
+
+@keyframes sigilPulse {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(6deg) scale(1.05);
+  }
+}
+
+.sigil-mark {
+  animation: sigilPulse 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sigil-mark {
+    animation: none;
+  }
+}
+
+/* Iron Coven Arcana — static archive windows + nested tarot flip */
+.arcana-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+}
+
+.arcana-archive-window {
+  position: relative;
+  width: 100%;
+  isolation: isolate;
+  border: 1px solid #3a3a3a;
+  box-shadow:
+    inset 1px 1px 0 #444,
+    inset -1px -1px 0 #111,
+    3px 3px 0 rgba(0, 0, 0, 0.5);
+  background: #0a0a0a;
+  overflow: hidden;
+}
+
+.arcana-archive-body {
+  padding: 7px;
+  background: #050505;
+}
+
+.arcana-archive-footer {
+  border-top: 1px solid;
+  background: #0a0a0a;
+}
+
+.arcana-card-body {
+  position: relative;
+  background: #050505;
+  min-height: 0;
+}
+
+.arcana-card-body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 120px 120px;
+  mix-blend-mode: overlay;
+}
+
+.arcana-win-titlebar {
+  background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+  border-bottom: 1px solid #0a0a0a;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.arcana-win-btn {
+  border: 1px solid #555;
+  background: linear-gradient(180deg, #333 0%, #1e1e1e 100%);
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1);
+  border-radius: 1px;
+}
+
+.arcana-win-btn:hover {
+  border-color: var(--btn-accent, #888);
+  color: var(--btn-accent, #fff);
+}
+
+.arcana-tarot-perspective {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  perspective: 1400px;
+}
+
+.arcana-tarot-flip-inner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3.4;
+  transform-style: preserve-3d;
+  transition: transform 0.75s cubic-bezier(0.4, 0.15, 0.2, 1);
+}
+
+.arcana-tarot-flip-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.arcana-tarot-face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.arcana-tarot-back {
+  transform: rotateY(180deg);
+}
+
+.arcana-tarot-card {
+  border: 1px solid var(--arcana-border, rgba(255, 255, 255, 0.45));
+  background: #050505;
+}
+
+.arcana-tarot-frame {
+  border: 1px solid var(--arcana-border, rgba(255, 255, 255, 0.45));
+  box-shadow:
+    inset 0 0 0 1px #050505,
+    inset 0 0 0 2px var(--arcana-border, rgba(255, 255, 255, 0.2));
+}
+
+.arcana-editorial-rule {
+  height: 1px;
+  opacity: 0.65;
+}
+
+.arcana-symbol-img {
+  image-rendering: auto;
+}
+
+.arcana-portrait-frame {
+  border: 1px solid;
+  min-height: 6rem;
+}
+
+.arcana-portrait-dither img {
+  filter: contrast(1.5) brightness(0.88) grayscale(1);
+}
+
+.arcana-portrait-dither::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.1) 0px,
+      rgba(0, 0, 0, 0.1) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='d'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23d)' opacity='0.12'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+.arcana-portrait-fallback {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.03) 0px,
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    #0a0a0a;
+  min-height: 6rem;
+}
+
+.arcana-dossier-panel {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(8px);
+  overflow: hidden;
+  transition:
+    max-height 0.55s cubic-bezier(0.4, 0.2, 0.2, 1),
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+.arcana-dossier-panel.arcana-dossier-inline {
+  margin-top: 0;
+}
+
+.arcana-dossier-panel.arcana-dossier-inline.is-visible {
+  margin-top: 1rem;
+}
+
+.arcana-dossier-panel.is-visible {
+  max-height: 560px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.arcana-dossier-window {
+  border: 1px solid #3a3a3a;
+  background: #0a0a0a;
+  overflow: hidden;
+}
+
+.arcana-dossier-header {
+  border-bottom: 1px solid;
+  background: #0a0a0a;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.arcana-dossier-body {
+  background: #050505;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arcana-tarot-flip-inner {
+    transition: transform 0.01ms;
+  }
+
+  .arcana-dossier-panel,
+  .arcana-dossier-panel.is-visible {
+    transition: none;
+    transform: none;
+  }
+
+  .arcana-dossier-panel:not(.is-visible) {
+    display: none;
+  }
 }
