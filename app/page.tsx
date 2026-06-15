@@ -7,7 +7,7 @@ import { Newsletter } from "@/components/home/Newsletter";
 
 export default function Home() {
   return (
-    <main>
+    <main className="min-w-0 overflow-x-clip">
       <Hero />
       <About />
       <Performers />

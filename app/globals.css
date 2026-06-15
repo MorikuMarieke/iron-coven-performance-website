@@ -50,10 +50,23 @@
   --font-maguntia: var(--font-unifraktur-maguntia);
 }
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), sans-serif;
+}
+
+.section-shell {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 5rem);
 }
 
 /* Fixed texture overlays */
@@ -140,7 +153,12 @@ body {
 /* Hero layered atmosphere */
 .hero-layers {
   position: relative;
-  background-color: #050505;
+  background-color: var(--background);
+}
+
+.hero-chains-panel {
+  position: relative;
+  isolation: isolate;
 }
 
 .hero-left-scrim {
@@ -152,27 +170,53 @@ body {
   );
 }
 
-.hero-title-poster {
-  font-size: clamp(2.5rem, 7vw, 4rem);
-  line-height: 0.92;
+@media (min-width: 1024px) {
+  .hero-left-scrim {
+    background: var(--background);
+  }
+
+  .hero-layer-dust::before {
+    opacity: 0.05;
+  }
+
+  .hero-layer-scratches::after {
+    opacity: 0.08;
+  }
+
+  .hero-layer-wear {
+    background:
+      radial-gradient(ellipse at 85% 80%, rgba(0, 0, 0, 0.25) 0%, transparent 50%),
+      radial-gradient(ellipse at center, transparent 50%, rgba(5, 5, 5, 0.35) 100%);
+  }
+
+  .hero-layer-scanlines {
+    opacity: 0.35;
+  }
 }
 
-@media (min-width: 768px) {
+.hero-title-poster {
+  display: block;
+  font-size: clamp(2.6rem, 13vw, 4.2rem);
+  line-height: 0.88;
+  max-width: 10ch;
+  hyphens: none;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+@media (min-width: 640px) {
   .hero-title-poster {
-    font-size: clamp(2.75rem, 7vw, 6.5rem);
-    line-height: 0.9;
+    font-size: clamp(3rem, 10vw, 5.5rem);
+    line-height: 0.86;
+    max-width: 11ch;
   }
 }
 
 @media (min-width: 1024px) {
   .hero-title-poster {
-    font-size: clamp(3rem, 6.5vw, 7rem);
-  }
-}
-
-@media (min-width: 1280px) {
-  .hero-title-poster {
-    font-size: clamp(3rem, 6.5vw, 7rem);
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 0.85;
+    max-width: 11ch;
   }
 }
 
@@ -245,13 +289,19 @@ body {
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
   pointer-events: none;
   font: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
   line-height: inherit;
   letter-spacing: inherit;
-  word-break: break-word;
-  text-wrap: balance;
+  text-wrap: wrap;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  white-space: normal;
+  max-width: inherit;
 }
 
 .hero-title-aberration::before {
@@ -394,7 +444,6 @@ body {
 .arcana-archive-window {
   position: relative;
   width: 100%;
-  isolation: isolate;
   border: 1px solid #3a3a3a;
   box-shadow:
     inset 1px 1px 0 #444,
@@ -491,6 +540,7 @@ body {
   width: 100%;
   overflow: hidden;
   perspective: 1400px;
+  -webkit-perspective: 1400px;
 }
 
 .arcana-tarot-flip-inner {
@@ -498,6 +548,7 @@ body {
   width: 100%;
   aspect-ratio: 2 / 3.4;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   transition: transform 0.75s cubic-bezier(0.4, 0.15, 0.2, 1);
 }
 
@@ -505,22 +556,39 @@ body {
   transform: rotateY(180deg);
 }
 
+.arcana-tarot-flip-inner.is-flipped .arcana-tarot-front {
+  visibility: hidden;
+}
+
 .arcana-tarot-face {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.arcana-tarot-front {
+  transform: rotateY(0deg) translateZ(1px);
+  z-index: 2;
 }
 
 .arcana-tarot-back {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) translateZ(1px);
+  z-index: 1;
 }
 
 .arcana-tarot-card {
+  height: 100%;
   border: 1px solid var(--arcana-border, rgba(255, 255, 255, 0.45));
   background: #050505;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0.1px);
 }
 
 .arcana-tarot-frame {
@@ -571,6 +639,12 @@ body {
 .arcana-portrait-frame {
   border: 1px solid;
   min-height: 6rem;
+}
+
+.arcana-portrait-dither {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0.1px);
 }
 
 .arcana-portrait-dither img {

@@ -27,13 +27,13 @@ export function Performers() {
     <section
       id="iron-coven"
       aria-labelledby="iron-coven-heading"
-      className="arcana-section relative border-b border-white/20 bg-black px-6 py-16 md:px-12 md:py-20 lg:px-20"
+      className="arcana-section relative min-w-0 border-b border-white/20 bg-black py-16 md:py-20"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="section-shell">
         <header className="mb-10 border-b border-white/15 pb-8 md:mb-12">
           <h2
             id="iron-coven-heading"
-            className="font-sans text-2xl font-medium uppercase tracking-[0.35em] text-white md:text-3xl"
+            className="font-sans text-2xl font-medium text-balance uppercase tracking-[0.35em] text-white max-lg:tracking-[0.2em] md:text-3xl"
           >
             {event.ironCoven.heading}
           </h2>
@@ -60,23 +60,23 @@ export function Performers() {
           </p>
 
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-          {performers.map((performer) => (
-            <div key={performer.slug} className="min-w-0 w-full">
-              <ArcanaWindow
-                performer={performer}
-                flipped={flippedSlug === performer.slug}
-                onFlip={() => handleFlip(performer.slug)}
-              />
-
-              <div className="lg:hidden">
-                <ArcanaDossierPanel
+            {performers.map((performer) => (
+              <div key={performer.slug} className="min-w-0 w-full">
+                <ArcanaWindow
                   performer={performer}
-                  visible={activeSlug === performer.slug}
-                  inline
+                  flipped={flippedSlug === performer.slug}
+                  onFlip={() => handleFlip(performer.slug)}
                 />
+
+                <div className="lg:hidden">
+                  <ArcanaDossierPanel
+                    performer={performer}
+                    visible={activeSlug === performer.slug}
+                    inline
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
           </div>
         </div>
 

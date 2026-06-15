@@ -5,9 +5,9 @@ export function PracticalInfo() {
     <section
       id="practical"
       aria-labelledby="practical-heading"
-      className="border-b border-white/20 px-6 py-20 md:px-12 lg:px-20"
+      className="min-w-0 border-b border-white/20 py-20"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="section-shell">
         <header className="mb-10 border-b border-white/15 pb-8 md:mb-12">
           <h2
             id="practical-heading"

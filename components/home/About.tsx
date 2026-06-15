@@ -15,10 +15,10 @@ export function About() {
     <section
       id="concept"
       aria-labelledby="about-heading"
-      className="relative border-b border-white/30 px-6 py-20 md:px-12 lg:px-20"
+      className="relative min-w-0 border-b border-white/30 py-20"
     >
-      <div className="mx-auto max-w-7xl">
-        <div className="relative border border-dashed border-white/60 p-8 md:p-12 lg:ml-12">
+      <div className="section-shell">
+        <div className="relative overflow-hidden border border-dashed border-white/60 p-8 md:p-12 lg:ml-12">
           <div className="absolute -left-4 -top-4 hidden h-8 w-8 border border-white md:block" />
 
           <h2
