@@ -8,9 +8,9 @@ export const event = {
     iso: "2026-10-31",
   },
   location: {
-    venue: "The Vault",
-    city: "Berlin",
-    display: "The Vault, Berlin",
+    venue: "De Vorstin",
+    city: "Hilversum",
+    display: "De Vorstin, Hilversum",
   },
   concept: {
     heading: "The concept",
