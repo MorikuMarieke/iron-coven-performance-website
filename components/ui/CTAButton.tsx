@@ -9,13 +9,13 @@ type CTAButtonProps = {
 };
 
 const baseStyles =
-  "inline-flex min-h-11 items-center justify-center border border-white px-6 py-2.5 text-center text-sm uppercase tracking-widest transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
+  "inline-flex min-h-11 items-center justify-center border border-beige px-6 py-2.5 text-center text-sm uppercase tracking-widest transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-beige";
 
 const variants = {
   primary:
-    "bg-white text-black hover:bg-transparent hover:text-white",
+    "bg-beige text-black hover:bg-transparent hover:text-beige",
   secondary:
-    "bg-transparent text-white hover:bg-white hover:text-black",
+    "bg-transparent text-beige hover:bg-beige hover:text-black",
 };
 
 export function CTAButton({

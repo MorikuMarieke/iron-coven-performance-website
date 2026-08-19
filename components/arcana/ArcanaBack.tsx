@@ -7,7 +7,7 @@ function DossierField({ label, value }: { label: string; value: string }) {
       <p className="arcana-accent-text-faint font-mono text-[8px] font-bold uppercase tracking-[0.22em]">
         {label}
       </p>
-      <p className="mt-0.5 whitespace-pre-line font-mono text-[10px] font-bold leading-snug text-[#EDEDED]">
+      <p className="mt-0.5 whitespace-pre-line font-mono text-[10px] font-bold leading-snug text-beige">
         {value}
       </p>
     </div>
@@ -20,10 +20,10 @@ export function ArcanaBack({ performer }: { performer: ArcanaPerformer }) {
   return (
     <div className="arcana-card-body relative flex flex-1 flex-col px-2.5 pb-3 pt-2">
       <div className="flex items-center justify-between px-0.5">
-        <span className="font-mono text-[10px] tracking-[0.12em] text-[#EDEDED]/60">
+        <span className="font-mono text-[10px] tracking-[0.12em] text-beige/60">
           {performer.romanNumeral}
         </span>
-        <span className="font-mono text-[7px] font-bold uppercase tracking-[0.2em] text-[#EDEDED]/45">
+        <span className="font-mono text-[7px] font-bold uppercase tracking-[0.2em] text-beige/45">
           Arcana Dossier
         </span>
         <span className="w-4" aria-hidden="true" />
@@ -51,7 +51,7 @@ export function ArcanaBack({ performer }: { performer: ArcanaPerformer }) {
         </div>
       </div>
 
-      <p className="mt-2 flex-1 font-mono text-[9px] leading-relaxed text-[#EDEDED]/75">
+      <p className="mt-2 flex-1 font-mono text-[9px] leading-relaxed text-beige/75">
         {performer.cardDescription}
       </p>
     </div>

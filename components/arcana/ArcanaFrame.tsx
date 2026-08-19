@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import "./arcana-frame.css";
 
 export function ArcanaFrame({
-  color = "#e8e4dc",
+  color = "#fafae6",
   className = "",
   children,
 }: {

@@ -15,7 +15,7 @@ export function Socials() {
           >
             Follow the circle
           </h2>
-          <p className="mx-auto mt-3 max-w-lg font-mono text-[10px] uppercase tracking-[0.3em] text-white/45 md:text-xs">
+          <p className="mx-auto mt-3 max-w-lg font-mono uppercase text-white/45">
             Whispers, dates, and glimpses behind the veil
           </p>
         </header>
@@ -36,7 +36,7 @@ export function Socials() {
                 }
                 className="group flex min-w-0 w-full flex-col border border-white/40 px-6 py-4 transition-all hover:border-white hover:bg-white/5 sm:min-w-[12rem] sm:w-auto"
               >
-                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/45 group-hover:text-white/60">
+                <span className="font-mono uppercase text-white/45 group-hover:text-white/60">
                   {link.platform}
                 </span>
                 <span className="mt-1 font-sans text-sm tracking-wide text-white/90 group-hover:text-white md:text-base">

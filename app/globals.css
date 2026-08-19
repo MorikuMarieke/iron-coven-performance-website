@@ -1,53 +1,85 @@
 @import "tailwindcss";
 
 :root {
-  --background: #050505;
-  --foreground: #f5f5f5;
-  --accent-red: #8b1a1a;
-  --accent-pink: #ff006e;
-  --accent-green: #4a5d23;
-  --accent-blue: #5b8db8;
-  --iridescent-mint: #b9e3de;
-  --iridescent-sky: #a9c5eb;
-  --iridescent-lavender: #d2b4de;
-  --iridescent-rose: #fadbd8;
-  --iridescent-warm: #fafae6;
-  --accent-hot-pink: #ff2ea6;
-  --accent-violet: #9b5fff;
-  --accent-electric-blue: #57b8ff;
-  --accent-ice-cyan: #6ef7ff;
-  --accent-bloom-pink: #fe72d8;
-  --accent-neon-green: #89e46b;
-  --accent-royal-blue: #334eff;
-  --accent-heliotrope: #8f77f8;
+  /* Core palette */
+  --black: #08090a;
+  --onyx: #141416;
+  --midnight-violet: #2b0d17;
+  --burgundy: #8e0e2f;
+  --rosewood: #c2184b;
+  --beige: #fafae6;
+  --grey-olive: #989898;
+  --slime-lime: #b4ff00;
 
-  /* Arcana card key colors — swap :root values above to test palette-wide */
-  --arcana-anarchist: var(--accent-bloom-pink);
-  --arcana-shapeshifter: var(--accent-neon-green);
-  --arcana-sorceress: var(--accent-heliotrope);
-  --arcana-catalyst: var(--accent-royal-blue);
-  --arcana-anarchist-muted: color-mix(in srgb, var(--arcana-anarchist) 62%, white);
-  --arcana-shapeshifter-muted: color-mix(in srgb, var(--arcana-shapeshifter) 62%, white);
-  --arcana-sorceress-muted: color-mix(in srgb, var(--arcana-sorceress) 62%, white);
-  --arcana-catalyst-muted: color-mix(in srgb, var(--arcana-catalyst) 62%, white);
+  /* Semantic roles */
+  --background: var(--black);
+  --foreground: var(--beige);
+  --surface: var(--onyx);
+  --muted: var(--grey-olive);
+  --atmosphere: var(--midnight-violet);
+  --accent: var(--rosewood);
+  --accent-deep: var(--burgundy);
+  --signal: var(--slime-lime);
+
+  /* Useful mixes — not extra hues */
+  --gradient-atmosphere: linear-gradient(
+    180deg,
+    var(--black),
+    var(--onyx),
+    var(--midnight-violet)
+  );
+  --gradient-blood: linear-gradient(
+    180deg,
+    var(--midnight-violet),
+    var(--burgundy),
+    var(--rosewood)
+  );
+
+  /* Arcana — four cards, four palette accents */
+  --arcana-anarchist: var(--rosewood);
+  --arcana-shapeshifter: var(--slime-lime);
+  --arcana-sorceress: var(--burgundy);
+  --arcana-catalyst: var(--beige);
+  --arcana-anarchist-muted: color-mix(in srgb, var(--rosewood) 62%, var(--beige));
+  --arcana-shapeshifter-muted: color-mix(in srgb, var(--slime-lime) 62%, var(--beige));
+  --arcana-sorceress-muted: color-mix(in srgb, var(--burgundy) 62%, var(--beige));
+  --arcana-catalyst-muted: color-mix(in srgb, var(--beige) 70%, var(--grey-olive));
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-accent-red: var(--accent-red);
-  --color-accent-pink: var(--accent-pink);
-  --color-accent-green: var(--accent-green);
-  --color-accent-blue: var(--accent-blue);
-  --color-accent-bloom-pink: var(--accent-bloom-pink);
-  --color-accent-neon-green: var(--accent-neon-green);
-  --color-accent-royal-blue: var(--accent-royal-blue);
-  --color-accent-heliotrope: var(--accent-heliotrope);
+  --color-black: var(--black);
+  --color-onyx: var(--onyx);
+  --color-midnight-violet: var(--midnight-violet);
+  --color-burgundy: var(--burgundy);
+  --color-rosewood: var(--rosewood);
+  --color-beige: var(--beige);
+  --color-grey-olive: var(--grey-olive);
+  --color-slime-lime: var(--slime-lime);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-atmosphere: var(--atmosphere);
+  --color-accent: var(--accent);
+  --color-accent-deep: var(--accent-deep);
+  --color-signal: var(--signal);
+  --color-white: var(--beige);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: var(--font-vt323), "VT323", monospace;
   --font-display: var(--font-libre-baskerville);
   --font-unifraktur: var(--font-unifraktur-cook);
   --font-maguntia: var(--font-unifraktur-maguntia);
+  --font-glitch: var(--font-rubik-glitch), "Rubik Glitch", cursive;
+}
+
+.font-glitch {
+  font-family: "Rubik Glitch", var(--font-rubik-glitch), cursive;
+}
+
+.font-mono {
+  font-family: "VT323", var(--font-vt323), monospace;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
 }
 
 html,
@@ -106,10 +138,10 @@ body {
 }
 
 .border-occult {
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  border: 1px solid color-mix(in srgb, var(--beige) 90%, transparent);
   box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.15),
-    4px 4px 0 rgba(255, 255, 255, 0.08);
+    inset 0 0 0 1px color-mix(in srgb, var(--beige) 15%, transparent),
+    4px 4px 0 color-mix(in srgb, var(--beige) 8%, transparent);
 }
 
 @keyframes glitch {
@@ -122,14 +154,14 @@ body {
   }
   20% {
     text-shadow:
-      -2px 0 rgba(255, 0, 110, 0.4),
-      2px 0 rgba(91, 141, 184, 0.4);
+      -2px 0 color-mix(in srgb, var(--rosewood) 40%, transparent),
+      2px 0 color-mix(in srgb, var(--slime-lime) 40%, transparent);
     transform: translate(-1px, 0);
   }
   40% {
     text-shadow:
-      2px 0 rgba(255, 0, 110, 0.3),
-      -2px 0 rgba(91, 141, 184, 0.3);
+      2px 0 color-mix(in srgb, var(--rosewood) 30%, transparent),
+      -2px 0 color-mix(in srgb, var(--slime-lime) 30%, transparent);
     transform: translate(1px, 0);
   }
   60% {
@@ -185,8 +217,8 @@ body {
 
   .hero-layer-wear {
     background:
-      radial-gradient(ellipse at 85% 80%, rgba(0, 0, 0, 0.25) 0%, transparent 50%),
-      radial-gradient(ellipse at center, transparent 50%, rgba(5, 5, 5, 0.35) 100%);
+      radial-gradient(ellipse at 85% 80%, color-mix(in srgb, var(--black) 25%, transparent) 0%, transparent 50%),
+      radial-gradient(ellipse at center, transparent 50%, color-mix(in srgb, var(--black) 35%, transparent) 100%);
   }
 
   .hero-layer-scanlines {
@@ -244,8 +276,8 @@ body {
       105deg,
       transparent,
       transparent 120px,
-      rgba(245, 245, 245, 0.045) 120px,
-      rgba(245, 245, 245, 0.045) 121px
+      color-mix(in srgb, var(--beige) 4.5%, transparent) 120px,
+      color-mix(in srgb, var(--beige) 4.5%, transparent) 121px
     ),
     url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='0' y1='80' x2='400' y2='95' stroke='rgba(245,245,245,0.06)' stroke-width='0.5'/%3E%3Cline x1='0' y1='200' x2='400' y2='210' stroke='rgba(245,245,245,0.04)' stroke-width='0.5'/%3E%3Cline x1='0' y1='320' x2='400' y2='305' stroke='rgba(245,245,245,0.05)' stroke-width='0.5'/%3E%3C/svg%3E");
   background-size: auto, cover;
@@ -257,9 +289,9 @@ body {
   z-index: 6;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at 15% 20%, rgba(250, 250, 230, 0.03) 0%, transparent 45%),
-    radial-gradient(ellipse at 85% 80%, rgba(0, 0, 0, 0.35) 0%, transparent 50%),
-    radial-gradient(ellipse at center, transparent 40%, rgba(5, 5, 5, 0.4) 100%);
+    radial-gradient(ellipse at 15% 20%, color-mix(in srgb, var(--beige) 3%, transparent) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 80%, color-mix(in srgb, var(--black) 35%, transparent) 0%, transparent 50%),
+    radial-gradient(ellipse at center, transparent 40%, color-mix(in srgb, var(--black) 40%, transparent) 100%);
 }
 
 .hero-layer-scanlines {
@@ -306,14 +338,14 @@ body {
 
 .hero-title-aberration::before {
   z-index: -2;
-  color: #6ef7ff;
+  color: var(--slime-lime);
   opacity: 0.44;
   animation: aberrationBefore 16s ease-in-out infinite;
 }
 
 .hero-title-aberration::after {
   z-index: -1;
-  color: #ff5ccf;
+  color: var(--rosewood);
   opacity: 0.42;
   animation: aberrationAfter 16s ease-in-out infinite;
 }
@@ -342,21 +374,21 @@ body {
   0%,
   100% {
     text-shadow:
-      1px 0 rgba(110, 247, 255, 0.38),
-      -1px 0 rgba(155, 95, 255, 0.34),
-      0 0.75px rgba(255, 92, 207, 0.28);
+      1px 0 color-mix(in srgb, var(--slime-lime) 38%, transparent),
+      -1px 0 color-mix(in srgb, var(--rosewood) 34%, transparent),
+      0 0.75px color-mix(in srgb, var(--burgundy) 28%, transparent);
   }
   33% {
     text-shadow:
-      1.1px 0 rgba(87, 184, 255, 0.35),
-      -1px 0 rgba(255, 46, 166, 0.32),
-      0 0 rgba(155, 95, 255, 0.26);
+      1.1px 0 color-mix(in srgb, var(--beige) 35%, transparent),
+      -1px 0 color-mix(in srgb, var(--rosewood) 32%, transparent),
+      0 0 color-mix(in srgb, var(--burgundy) 26%, transparent);
   }
   66% {
     text-shadow:
-      1px 0 rgba(255, 92, 207, 0.36),
-      -1.1px 0 rgba(110, 247, 255, 0.33),
-      0.6px 0 rgba(87, 184, 255, 0.28);
+      1px 0 color-mix(in srgb, var(--rosewood) 36%, transparent),
+      -1.1px 0 color-mix(in srgb, var(--slime-lime) 33%, transparent),
+      0.6px 0 color-mix(in srgb, var(--burgundy) 28%, transparent);
   }
 }
 
@@ -375,16 +407,16 @@ body {
   .hero-title-dream {
     animation: none;
     text-shadow:
-      0.75px 0 rgba(110, 247, 255, 0.32),
-      -0.75px 0 rgba(155, 95, 255, 0.28);
+      0.75px 0 color-mix(in srgb, var(--slime-lime) 32%, transparent),
+      -0.75px 0 color-mix(in srgb, var(--rosewood) 28%, transparent);
   }
 }
 
 .holographic-hover:hover {
   box-shadow:
-    0 0 14px rgba(185, 227, 222, 0.35),
-    0 0 18px rgba(210, 180, 222, 0.25),
-    0 0 12px rgba(250, 219, 216, 0.2);
+    0 0 14px color-mix(in srgb, var(--slime-lime) 35%, transparent),
+    0 0 18px color-mix(in srgb, var(--rosewood) 25%, transparent),
+    0 0 12px color-mix(in srgb, var(--beige) 20%, transparent);
 }
 
 .hero-cta-hover {
@@ -397,15 +429,15 @@ body {
 .hero-cta-hover:hover {
   transform: translateY(-2px);
   box-shadow:
-    0 0 12px rgba(185, 227, 222, 0.2),
-    0 0 16px rgba(155, 95, 255, 0.15);
+    0 0 12px color-mix(in srgb, var(--slime-lime) 22%, transparent),
+    0 0 16px color-mix(in srgb, var(--rosewood) 18%, transparent);
 }
 
 .hero-cta-hover.hero-cta-secondary:hover {
-  border-color: rgba(185, 227, 222, 0.5);
+  border-color: color-mix(in srgb, var(--slime-lime) 50%, transparent);
   box-shadow:
-    0 0 14px rgba(169, 197, 235, 0.25),
-    0 0 10px rgba(110, 247, 255, 0.15);
+    0 0 14px color-mix(in srgb, var(--rosewood) 25%, transparent),
+    0 0 10px color-mix(in srgb, var(--slime-lime) 18%, transparent);
 }
 
 @keyframes sigilPulse {
@@ -444,12 +476,12 @@ body {
 .arcana-archive-window {
   position: relative;
   width: 100%;
-  border: 1px solid #3a3a3a;
+  border: 1px solid color-mix(in srgb, var(--grey-olive) 38%, var(--onyx));
   box-shadow:
-    inset 1px 1px 0 #444,
-    inset -1px -1px 0 #111,
-    3px 3px 0 rgba(0, 0, 0, 0.5);
-  background: #0a0a0a;
+    inset 1px 1px 0 color-mix(in srgb, var(--grey-olive) 35%, var(--onyx)),
+    inset -1px -1px 0 var(--black),
+    3px 3px 0 color-mix(in srgb, var(--black) 50%, transparent);
+  background: var(--onyx);
   overflow: hidden;
 }
 
@@ -514,15 +546,15 @@ body {
     ),
     linear-gradient(
       115deg,
-      #ffffff 0%,
-      #7de7ff 15%,
-      #ffffff 25%,
-      #ffb8e8 40%,
-      #ffffff 50%,
-      #c7b0ff 65%,
-      #ffffff 75%,
-      #fff0a6 90%,
-      #ffffff 100%
+      var(--beige) 0%,
+      var(--slime-lime) 15%,
+      var(--beige) 25%,
+      var(--rosewood) 40%,
+      var(--beige) 50%,
+      var(--burgundy) 65%,
+      var(--beige) 75%,
+      var(--grey-olive) 90%,
+      var(--beige) 100%
     );
   background-size: 100% 100%, 100% 100%, 280% 100%;
   background-position: 0% 0%, 0% 0%, 0% 50%;
@@ -563,9 +595,9 @@ body {
   z-index: -1;
   background-image: linear-gradient(
     180deg,
-    #5a5a5a 0%,
-    #353535 42%,
-    #1a1a1a 100%
+    var(--grey-olive) 0%,
+    var(--onyx) 42%,
+    var(--black) 100%
   );
   transform: translate(1px, 2px);
   opacity: 0.92;
@@ -603,17 +635,17 @@ body {
 
 .arcana-archive-body {
   padding: 7px;
-  background: #050505;
+  background: var(--black);
 }
 
 .arcana-archive-footer {
   border-top: 1px solid;
-  background: #0a0a0a;
+  background: var(--onyx);
 }
 
 .arcana-card-body {
   position: relative;
-  background: #050505;
+  background: var(--black);
   min-height: 0;
 }
 
@@ -629,21 +661,21 @@ body {
 }
 
 .arcana-win-titlebar {
-  background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
-  border-bottom: 1px solid #0a0a0a;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  background: linear-gradient(180deg, var(--onyx) 0%, var(--black) 100%);
+  border-bottom: 1px solid var(--black);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--beige) 6%, transparent);
 }
 
 .arcana-win-btn {
-  border: 1px solid #555;
-  background: linear-gradient(180deg, #333 0%, #1e1e1e 100%);
-  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--grey-olive);
+  background: linear-gradient(180deg, var(--onyx) 0%, var(--black) 100%);
+  box-shadow: inset 1px 1px 0 color-mix(in srgb, var(--beige) 10%, transparent);
   border-radius: 1px;
 }
 
 .arcana-win-btn:hover {
-  border-color: var(--btn-accent, #888);
-  color: var(--btn-accent, #fff);
+  border-color: var(--btn-accent, var(--grey-olive));
+  color: var(--btn-accent, var(--beige));
 }
 
 .arcana-tarot-perspective {
@@ -695,8 +727,8 @@ body {
 
 .arcana-tarot-card {
   height: 100%;
-  border: 1px solid var(--arcana-border, rgba(255, 255, 255, 0.45));
-  background: #050505;
+  border: 1px solid var(--arcana-border, color-mix(in srgb, var(--beige) 45%, transparent));
+  background: var(--black);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0.1px);
@@ -705,10 +737,10 @@ body {
 .arcana-tarot-frame {
   display: grid;
   grid-template-rows: minmax(0, 1fr);
-  border: 1px solid var(--arcana-border, rgba(255, 255, 255, 0.45));
+  border: 1px solid var(--arcana-border, color-mix(in srgb, var(--beige) 45%, transparent));
   box-shadow:
-    inset 0 0 0 1px #050505,
-    inset 0 0 0 2px var(--arcana-accent-subtle, rgba(255, 255, 255, 0.2));
+    inset 0 0 0 1px var(--black),
+    inset 0 0 0 2px var(--arcana-accent-subtle, color-mix(in srgb, var(--beige) 20%, transparent));
   min-height: 0;
 }
 
@@ -783,12 +815,12 @@ body {
   background:
     repeating-linear-gradient(
       0deg,
-      rgba(255, 255, 255, 0.03) 0px,
-      rgba(255, 255, 255, 0.03) 1px,
+      color-mix(in srgb, var(--beige) 3%, transparent) 0px,
+      color-mix(in srgb, var(--beige) 3%, transparent) 1px,
       transparent 1px,
       transparent 3px
     ),
-    #0a0a0a;
+    var(--onyx);
   min-height: 6rem;
 }
 
@@ -818,24 +850,24 @@ body {
 }
 
 .arcana-dossier-window {
-  border: 1px solid #3a3a3a;
-  background: #0a0a0a;
+  border: 1px solid color-mix(in srgb, var(--grey-olive) 38%, var(--onyx));
+  background: var(--onyx);
   overflow: hidden;
 }
 
 .arcana-dossier-header {
   border-bottom: 1px solid;
-  background: #0a0a0a;
+  background: var(--onyx);
   padding: 0.5rem 1rem;
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 10px;
-  font-weight: 700;
+  font-family: "VT323", var(--font-vt323), monospace;
+  font-size: 1rem;
+  font-weight: 400;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
 .arcana-dossier-body {
-  background: #050505;
+  background: var(--black);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -851,5 +883,433 @@ body {
 
   .arcana-dossier-panel:not(.is-visible) {
     display: none;
+  }
+}
+
+/* ── Iron Coven archive shell (Phase 1 layout) ── */
+.iron-coven-archive {
+  --archive-black: var(--black);
+  --archive-graphite: var(--onyx);
+  --archive-wine-dark: var(--midnight-violet);
+  --archive-pomegranate: var(--burgundy);
+  --archive-magenta: var(--rosewood);
+  --archive-silver: var(--grey-olive);
+  --archive-bone: var(--beige);
+  --archive-signal: var(--slime-lime);
+}
+
+.archive-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: min(70vh, 42rem);
+  border: 1px solid color-mix(in srgb, var(--archive-silver) 28%, transparent);
+  background: var(--archive-graphite);
+}
+
+@media (min-width: 1024px) {
+  .archive-shell {
+    flex-direction: row;
+    align-items: stretch;
+    min-height: min(78vh, 46rem);
+  }
+}
+
+.archive-shell-nav {
+  flex-shrink: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--archive-silver) 22%, transparent);
+  background: color-mix(in srgb, var(--archive-black) 88%, var(--archive-graphite));
+}
+
+@media (min-width: 1024px) {
+  .archive-shell-nav {
+    width: min(18rem, 28%);
+    border-bottom: none;
+    border-right: 1px solid color-mix(in srgb, var(--archive-silver) 22%, transparent);
+  }
+}
+
+.archive-shell-detail {
+  position: relative;
+  isolation: isolate;
+  flex: 1;
+  min-width: 0;
+  min-height: 22rem;
+  overflow: hidden;
+  background: var(--archive-black);
+}
+
+.archive-detail-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.archive-detail-atmosphere-image {
+  object-fit: cover;
+  object-position: center;
+  filter: contrast(1.08) brightness(0.72) saturate(1.05);
+  transform: scale(1.02);
+}
+
+.archive-detail-atmosphere-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      105deg,
+      color-mix(in srgb, var(--archive-black) 88%, transparent) 12%,
+      color-mix(in srgb, var(--archive-black) 42%, transparent) 48%,
+      color-mix(in srgb, var(--archive-wine-dark) 35%, transparent) 100%
+    ),
+    linear-gradient(
+      to top,
+      color-mix(in srgb, var(--archive-black) 82%, transparent) 0%,
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 65% 50% at 78% 42%,
+      color-mix(in srgb, var(--archive-magenta) 22%, transparent),
+      transparent 72%
+    );
+}
+
+.archive-shell-detail-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  min-height: inherit;
+}
+
+/* Tree — quiet functional nav */
+.archive-tree {
+  padding: 1rem 0.875rem 1.25rem;
+}
+
+.archive-tree-root {
+  margin: 0 0 0.875rem;
+  color: color-mix(in srgb, var(--archive-silver) 70%, transparent);
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.archive-tree-list,
+.archive-tree-children {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.archive-tree-children {
+  position: relative;
+  margin-left: 0.65rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid color-mix(in srgb, var(--archive-silver) 18%, transparent);
+}
+
+.archive-tree-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: 100%;
+  min-height: 2.5rem;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid transparent;
+  background: transparent;
+  color: color-mix(in srgb, var(--archive-bone) 72%, transparent);
+  font-family: "VT323", var(--font-vt323), monospace;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-align: left;
+  cursor: pointer;
+}
+
+.archive-tree-item:hover,
+.archive-tree-item:focus-visible {
+  color: var(--archive-bone);
+  border-color: color-mix(in srgb, var(--archive-silver) 16%, transparent);
+  background: color-mix(in srgb, var(--archive-silver) 6%, transparent);
+  outline: none;
+}
+
+.archive-tree-item.is-selected {
+  color: var(--archive-bone);
+  border-color: color-mix(in srgb, var(--archive-silver) 22%, transparent);
+  background: color-mix(in srgb, var(--archive-silver) 8%, transparent);
+}
+
+.archive-tree-folder {
+  color: color-mix(in srgb, var(--archive-silver) 85%, transparent);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.archive-tree-leaf {
+  min-height: 2.75rem;
+}
+
+.archive-tree-glyph {
+  flex-shrink: 0;
+  width: 0.85rem;
+  color: color-mix(in srgb, var(--archive-silver) 55%, transparent);
+  font-size: 0.55rem;
+  line-height: 1;
+  text-align: center;
+}
+
+.archive-tree-glyph-file {
+  font-size: 0.5rem;
+  opacity: 0.7;
+}
+
+.archive-tree-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.archive-tree-signal {
+  flex-shrink: 0;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 999px;
+  background: var(--archive-signal);
+  box-shadow: 0 0 6px color-mix(in srgb, var(--archive-signal) 55%, transparent);
+}
+
+/* Shared meta */
+.archive-meta-path {
+  margin: 0 0 1rem;
+  color: color-mix(in srgb, var(--archive-silver) 65%, transparent);
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.archive-meta-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  margin: 0 0 1.25rem;
+}
+
+.archive-meta-fields > div {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+
+.archive-meta-fields dt {
+  margin: 0;
+  color: color-mix(in srgb, var(--archive-pomegranate) 80%, var(--archive-magenta));
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+}
+
+.archive-meta-fields dd {
+  margin: 0;
+  color: color-mix(in srgb, var(--archive-bone) 80%, transparent);
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+}
+
+.archive-status-dot {
+  display: inline-block;
+  width: 0.35rem;
+  height: 0.35rem;
+  margin-right: 0.4rem;
+  border-radius: 999px;
+  background: var(--archive-signal);
+  vertical-align: middle;
+}
+
+/* Collective panel — editorial record */
+.archive-collective {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: inherit;
+  height: 100%;
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+}
+
+.archive-collective-content {
+  position: relative;
+  max-width: 36rem;
+}
+
+.archive-collective-title {
+  margin: 0 0 0.875rem;
+  color: var(--archive-bone);
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+}
+
+.archive-collective-body {
+  margin: 0;
+  max-width: 34ch;
+  color: color-mix(in srgb, var(--archive-bone) 78%, transparent);
+  font-size: clamp(0.875rem, 1.4vw, 1.05rem);
+  line-height: 1.65;
+}
+
+/* Performer panel — tarot card + intro two-column */
+.performer-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: inherit;
+}
+
+@media (min-width: 768px) {
+  .performer-panel {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+
+/* Left: tarot card column */
+.performer-panel-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: clamp(0.75rem, 2vw, 1.25rem);
+}
+
+@media (min-width: 768px) {
+  .performer-panel-card {
+    width: clamp(18rem, 52%, 30rem);
+    border-right: 1px solid color-mix(in srgb, var(--archive-silver) 18%, transparent);
+  }
+}
+
+.performer-panel-card-window {
+  width: 100%;
+  max-width: 28rem;
+}
+
+/* Override per-performer accent colours in the titlebar — use bone white instead */
+.performer-panel-card-window .arcana-win-titlebar {
+  color: var(--beige);
+}
+
+.performer-panel-card-window .arcana-accent-text {
+  color: var(--beige);
+}
+
+.performer-panel-card-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--onyx);
+}
+
+.performer-panel-card-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(72vh, 52rem);
+  object-fit: contain;
+}
+
+/* Right: intro panel column */
+.performer-panel-intro {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+}
+
+/* Intro panel inner */
+.performer-intro-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  height: 100%;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.performer-intro-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-bottom: 0.875rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--archive-silver) 18%, transparent);
+}
+
+.performer-intro-archetype {
+  margin: 0;
+  color: var(--archive-bone);
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.performer-intro-name {
+  margin: 0;
+  color: color-mix(in srgb, var(--archive-silver) 85%, transparent);
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.performer-intro-motto {
+  margin: 0;
+  color: var(--slime-lime);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.45;
+  white-space: pre-line;
+  letter-spacing: 0.2em;
+}
+
+.performer-intro-bio {
+  margin: 0;
+  color: color-mix(in srgb, var(--archive-bone) 80%, transparent);
+  font-size: clamp(0.8125rem, 1.2vw, 0.9375rem);
+  line-height: 1.7;
+}
+
+.performer-intro-performance {
+  margin: 0;
+  color: color-mix(in srgb, var(--archive-bone) 60%, transparent);
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  font-style: italic;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .archive-tree-item {
+    transition:
+      color 120ms ease,
+      background-color 120ms ease,
+      border-color 120ms ease;
+  }
+
+  .archive-shell-detail-content > * {
+    animation: archivePanelIn 180ms ease-out;
+  }
+}
+
+@keyframes archivePanelIn {
+  from {
+    opacity: 0.72;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .archive-shell-detail-content > * {
+    animation: none;
   }
 }

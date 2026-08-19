@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import type { ArcanaAccent } from "./performers";
 
-/** Arcana card accent tokens — reference :root vars for easy palette testing */
+/** Arcana card accent tokens — mapped to the site palette in :root */
 export const arcanaAccents = {
   anarchist: {
     primary: "var(--arcana-anarchist)",

@@ -18,6 +18,7 @@ export type ArcanaPerformer = {
   symbol: string;
   symbolSrc: string;
   portraitSrc: string;
+  tarotCardSrc: string;
   subtitle: string;
   theme: string;
   accent: ArcanaAccent;
@@ -41,13 +42,14 @@ export const performers: ArcanaPerformer[] = [
     symbol: "broken mirror",
     symbolSrc: "/images/arcana/Mirror%20Arcana.svg",
     portraitSrc: "/images/arcana/portraits/trixxxie.svg",
+    tarotCardSrc: "/images/arcana/tarot/the-anarchist.png",
     subtitle:
       "A BREAKER OF RULES AND STRUCTURES. WILD SPIRIT, TRUTH SPEAKER, DISRUPTOR.",
     theme: "fractured identity · rebellion · distorted reflections",
     accent: {
       ...arcanaAccents.anarchist,
       glow: "",
-      text: "#FFFFFF",
+      text: "var(--beige)",
     },
     bio: "Fragmented light, unbroken will — rebellion stitched into every gesture.",
     cardDescription:
@@ -70,13 +72,14 @@ export const performers: ArcanaPerformer[] = [
     symbol: "moth",
     symbolSrc: "/images/arcana/Moth%20Arcana.svg",
     portraitSrc: "/images/arcana/portraits/moth.svg",
+    tarotCardSrc: "/images/arcana/tarot/the-shapeshifter.png",
     subtitle:
       "A CREATURE OF TRANSFORMATION. LIMINAL, METAMORPHIC, DRAWN TO FLAME.",
     theme: "transformation · becoming · liminality",
     accent: {
       ...arcanaAccents.shapeshifter,
       glow: "",
-      text: "#EDEDED",
+      text: "var(--beige)",
     },
     bio: "Metamorphosis as ritual — neither shadow nor light, always becoming.",
     cardDescription:
@@ -99,13 +102,14 @@ export const performers: ArcanaPerformer[] = [
     symbol: "snake",
     symbolSrc: "/images/arcana/Snake%20Arcana.svg",
     portraitSrc: "/images/arcana/portraits/elena.svg",
+    tarotCardSrc: "/images/arcana/tarot/the-sorceress.png",
     subtitle:
       "A WEAVER OF SHADOW AND SPELL. ANCIENT KNOWLEDGE, RITUAL POWER, FORBIDDEN ARTS.",
     theme: "ritual · incantation · shadow · arcane knowledge",
     accent: {
       ...arcanaAccents.sorceress,
       glow: "",
-      text: "#FFFFFF",
+      text: "var(--beige)",
     },
     bio: "Silver tongue, serpent grace — spellcraft woven through gesture and gaze.",
     cardDescription:
@@ -128,13 +132,14 @@ export const performers: ArcanaPerformer[] = [
     symbol: "comet",
     symbolSrc: "/images/arcana/Eclipse%20Arcana.svg",
     portraitSrc: "/images/arcana/portraits/annaestheesia.svg",
+    tarotCardSrc: "/images/arcana/tarot/the-catalyst.png",
     subtitle:
       "AN AGENT OF IGNITION AND CHANGE. VELOCITY, VOLTAGE, MOMENTUM.",
     theme: "ignition · change · momentum · movement",
     accent: {
       ...arcanaAccents.catalyst,
       glow: "",
-      text: "#FFFFFF",
+      text: "var(--beige)",
     },
     bio: "A comet through the coven — velocity, voltage, transformation.",
     cardDescription:

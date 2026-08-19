@@ -23,7 +23,7 @@ export function About() {
 
           <h2
             id="about-heading"
-            className="font-display mb-8 text-3xl font-bold md:text-4xl"
+            className="font-glitch mb-8 text-3xl md:text-4xl"
           >
             {event.concept.heading}
           </h2>
@@ -36,7 +36,7 @@ export function About() {
             {event.concept.keywords.map((word, i) => (
               <li
                 key={word}
-                className={`border border-white px-4 py-2 font-mono text-xs uppercase tracking-widest transition-transform hover:scale-105 ${rotations[i % rotations.length]}`}
+                className={`border border-white px-4 py-2 font-mono uppercase transition-transform hover:scale-105 ${rotations[i % rotations.length]}`}
               >
                 {word}
               </li>

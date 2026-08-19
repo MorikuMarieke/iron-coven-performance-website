@@ -30,8 +30,8 @@ export function ArcanaDossierPanel({
           <p className="arcana-dossier-motto arcana-accent-text whitespace-pre-line font-mono text-sm font-bold leading-snug">
             {performer.motto}
           </p>
-          <p className="font-mono text-xs leading-relaxed text-[#EDEDED]/80">{performer.longBio}</p>
-          <p className="font-mono text-[11px] leading-relaxed text-[#EDEDED]/65">
+          <p className="font-mono text-xs leading-relaxed text-beige/80">{performer.longBio}</p>
+          <p className="font-mono text-[11px] leading-relaxed text-beige/65">
             {performer.performanceDescription}
           </p>
         </div>

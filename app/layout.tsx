@@ -1,20 +1,16 @@
 import type { Metadata } from "next";
 import {
   Geist,
-  Geist_Mono,
   Libre_Baskerville,
+  Rubik_Glitch,
   UnifrakturCook,
   UnifrakturMaguntia,
+  VT323,
 } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
@@ -36,6 +32,18 @@ const unifrakturMaguntia = UnifrakturMaguntia({
   weight: "400",
 });
 
+const rubikGlitch = Rubik_Glitch({
+  variable: "--font-rubik-glitch",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const vt323 = VT323({
+  variable: "--font-vt323",
+  subsets: ["latin"],
+  weight: "400",
+});
+
 export const metadata: Metadata = {
   title: "Witchy Performance — A ritual of body, shadow and becoming",
   description:
@@ -50,8 +58,20 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${libreBaskerville.variable} ${unifrakturCook.variable} ${unifrakturMaguntia.variable} h-full antialiased scroll-smooth`}
+      className={`${geistSans.variable} ${libreBaskerville.variable} ${unifrakturCook.variable} ${unifrakturMaguntia.variable} ${rubikGlitch.variable} ${vt323.variable} h-full antialiased scroll-smooth`}
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground noise-overlay scanlines">
         {children}
       </body>
