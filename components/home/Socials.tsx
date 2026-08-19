@@ -5,17 +5,17 @@ export function Socials() {
     <section
       id="socials"
       aria-labelledby="socials-heading"
-      className="border-b border-white/20 px-6 py-20 md:px-12 lg:px-20"
+      className="min-w-0 border-b border-white/20 py-20"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="section-shell">
         <header className="mb-10 text-center md:mb-12">
           <h2
             id="socials-heading"
-            className="font-display text-3xl font-bold md:text-4xl"
+            className="font-unifraktur text-5xl md:text-6xl"
           >
-            Follow the circle
+            Follow the Coven
           </h2>
-          <p className="mx-auto mt-3 max-w-lg font-mono text-[10px] uppercase tracking-[0.3em] text-white/45 md:text-xs">
+          <p className="mx-auto mt-3 max-w-lg font-mono uppercase text-white/45">
             Whispers, dates, and glimpses behind the veil
           </p>
         </header>
@@ -25,7 +25,7 @@ export function Socials() {
           role="list"
         >
           {socialLinks.map((link) => (
-            <li key={link.platform}>
+            <li key={link.platform} className="min-w-0 w-full sm:w-auto">
               <a
                 href={link.href}
                 target={link.href.startsWith("mailto:") ? undefined : "_blank"}
@@ -34,9 +34,9 @@ export function Socials() {
                     ? undefined
                     : "noopener noreferrer"
                 }
-                className="group flex min-w-[220px] flex-col border border-white/40 px-6 py-4 transition-all hover:border-white hover:bg-white/5"
+                className="group flex min-w-0 w-full flex-col border border-white/40 px-6 py-4 transition-all hover:border-white hover:bg-white/5 sm:min-w-[12rem] sm:w-auto"
               >
-                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/45 group-hover:text-white/60">
+                <span className="font-mono uppercase text-white/45 group-hover:text-white/60">
                   {link.platform}
                 </span>
                 <span className="mt-1 font-sans text-sm tracking-wide text-white/90 group-hover:text-white md:text-base">

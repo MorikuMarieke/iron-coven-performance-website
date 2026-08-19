@@ -2,15 +2,15 @@ export const event = {
   title: "A ritual of body, shadow and becoming.",
   subtitle: "Underground performance collective",
   tagline:
-    "Through pole, aerial silk, and embodied ritual — a séance of flesh, shadow, and feminine power.",
+    "Pole, dance, aerial chains, embodying desparation to exaltation - breaking the chains of societal expectations.",
   date: {
-    display: "Samhain Eve · 31 October 2026",
-    iso: "2026-10-31",
+    display: "Friday the 13th of November 2026",
+    iso: "2026-11-13",
   },
   location: {
-    venue: "The Vault",
-    city: "Berlin",
-    display: "The Vault, Berlin",
+    venue: "Vonk in de Wijk",
+    city: "Hilversum",
+    display: "Vonk in de Wijk, Hilversum",
   },
   concept: {
     heading: "The concept",
@@ -61,17 +61,8 @@ export type SocialLink = {
 export const socialLinks: SocialLink[] = [
   {
     platform: "Instagram",
-    handle: "@witchyperformance",
-    href: "https://instagram.com",
+    handle: "@iron.coven",
+    href: "https://instagram.com/iron.coven",
   },
-  {
-    platform: "TikTok",
-    handle: "@witchyperformance",
-    href: "https://tiktok.com",
-  },
-  {
-    platform: "Email",
-    handle: "ritual@witchyperformance.com",
-    href: "mailto:ritual@witchyperformance.com",
-  },
+
 ];

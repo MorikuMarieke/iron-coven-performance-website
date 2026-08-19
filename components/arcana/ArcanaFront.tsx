@@ -19,7 +19,10 @@ export function ArcanaFront({ performer }: { performer: ArcanaPerformer }) {
         </div>
       </div>
 
-      <h3 className="font-maguntia arcana-accent-text mt-3 text-center text-xl leading-tight md:text-2xl">
+      <h3
+        data-text={performer.archetype}
+        className="arcana-chrome-title font-maguntia mt-3 text-center"
+      >
         {performer.archetype}
       </h3>
       <TitleOrnament />
