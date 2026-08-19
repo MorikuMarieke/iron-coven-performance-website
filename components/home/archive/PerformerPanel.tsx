@@ -25,7 +25,7 @@ export function PerformerPanel({ performer }: PerformerPanelProps) {
     >
       <div className="performer-panel-card">
         <div
-          className="arcana-archive-window performer-panel-card-window rounded-sm"
+          className="arcana-archive-window performer-panel-card-window"
           style={accentVars}
         >
           <ArcanaArchiveChrome filename={getArchiveFilename(performer)} showFlip={false} />

@@ -36,11 +36,11 @@
   );
 
   /* Arcana — four cards, four palette accents */
-  --arcana-anarchist: var(--rosewood);
+  --arcana-disruptor: var(--rosewood);
   --arcana-shapeshifter: var(--slime-lime);
   --arcana-sorceress: var(--burgundy);
   --arcana-catalyst: var(--beige);
-  --arcana-anarchist-muted: color-mix(in srgb, var(--rosewood) 62%, var(--beige));
+  --arcana-disruptor-muted: color-mix(in srgb, var(--rosewood) 62%, var(--beige));
   --arcana-shapeshifter-muted: color-mix(in srgb, var(--slime-lime) 62%, var(--beige));
   --arcana-sorceress-muted: color-mix(in srgb, var(--burgundy) 62%, var(--beige));
   --arcana-catalyst-muted: color-mix(in srgb, var(--beige) 70%, var(--grey-olive));
@@ -64,16 +64,29 @@
   --color-accent-deep: var(--accent-deep);
   --color-signal: var(--signal);
   --color-white: var(--beige);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-open-sans);
   --font-mono: var(--font-vt323), "VT323", monospace;
   --font-display: var(--font-libre-baskerville);
   --font-unifraktur: var(--font-unifraktur-cook);
   --font-maguntia: var(--font-unifraktur-maguntia);
   --font-glitch: var(--font-rubik-glitch), "Rubik Glitch", cursive;
+  --font-jacquard: "Jacquard 24", var(--font-jacquard-24), serif;
 }
 
 .font-glitch {
   font-family: "Rubik Glitch", var(--font-rubik-glitch), cursive;
+}
+
+.font-jacquard {
+  font-family: "Jacquard 24", var(--font-jacquard-24), serif;
+}
+
+.font-unifraktur {
+  font-family: var(--font-unifraktur-cook), "UnifrakturCook", serif;
+}
+
+.font-maguntia {
+  font-family: var(--font-unifraktur-maguntia), "UnifrakturMaguntia", serif;
 }
 
 .font-mono {
@@ -898,6 +911,27 @@ body {
   --archive-signal: var(--slime-lime);
 }
 
+.archive-chain {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 3rem;
+  line-height: 0;
+}
+
+.archive-chain img {
+  display: block;
+  width: 100%;
+  max-width: 1330px;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .archive-chain {
+    margin-bottom: 4rem;
+  }
+}
+
 .archive-shell {
   display: flex;
   flex-direction: column;
@@ -1037,6 +1071,13 @@ body {
   color: var(--archive-bone);
   border-color: color-mix(in srgb, var(--archive-silver) 22%, transparent);
   background: color-mix(in srgb, var(--archive-silver) 8%, transparent);
+}
+
+.archive-tree-item.archive-tree-leaf.is-selected,
+.archive-tree-item.archive-tree-leaf.is-selected:hover,
+.archive-tree-item.archive-tree-leaf.is-selected:focus,
+.archive-tree-item.archive-tree-leaf.is-selected:focus-visible {
+  color: var(--rosewood);
 }
 
 .archive-tree-folder {
@@ -1193,14 +1234,87 @@ body {
 .performer-panel-card-window {
   width: 100%;
   max-width: 28rem;
+  border-radius: 0;
+  /* Outer raised bevel — metallic grey, no color. Bone white top/left, near-black bottom/right. */
+  border: 2px solid;
+  border-color: #fafae6 #1e1e1e #1e1e1e #fafae6;
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, #fafae6 14%, transparent),
+    inset 1px 0 0 color-mix(in srgb, #fafae6 10%, transparent),
+    inset -1px -1px 0 var(--black);
 }
 
-/* Override per-performer accent colours in the titlebar — use bone white instead */
+/* Title bar — dark grey chrome; acid green used only for the filename text */
 .performer-panel-card-window .arcana-win-titlebar {
+  background: var(--onyx);
+  background-image: none;
+  border-bottom: 1px solid #1a1a1a;
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, #fafae6 18%, transparent),
+    inset 0 -1px 0 var(--black);
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
   color: var(--beige);
 }
 
+/* Filename label — acid green: the only interface text in the title bar */
+.performer-panel-card-window .arcana-win-titlebar span.truncate {
+  color: #b4ff00;
+}
+
+/* Keep accent-text override neutral (icon beside filename) */
 .performer-panel-card-window .arcana-accent-text {
+  color: color-mix(in srgb, var(--beige) 60%, transparent);
+}
+
+/* Artwork well — neutral grey inset outline, no color */
+.performer-panel-card-window .arcana-archive-body {
+  outline: 1px solid color-mix(in srgb, #fafae6 10%, transparent);
+  outline-offset: -1px;
+}
+
+/* Footer status bar — sunken grey trough; status text in acid green as active readout */
+.performer-panel-card-window .arcana-archive-footer {
+  border-top: 1px solid #1a1a1a;
+  box-shadow: inset 0 1px 0 color-mix(in srgb, #fafae6 6%, transparent);
+}
+
+.performer-panel-card-window .arcana-archive-footer span {
+  color: #b4ff00;
+  opacity: 0.65;
+}
+
+/* Window control buttons — neutral grey/bone raised bevel, symbols dimmed */
+.performer-panel-card-window .arcana-win-btn {
+  background: var(--onyx);
+  background-image: none;
+  border: 1px solid;
+  border-color: color-mix(in srgb, #fafae6 48%, transparent) #1a1a1a #1a1a1a color-mix(in srgb, #fafae6 48%, transparent);
+  box-shadow:
+    inset 1px 1px 0 color-mix(in srgb, #fafae6 16%, transparent),
+    inset -1px -1px 0 var(--black);
+  border-radius: 0;
+  color: color-mix(in srgb, var(--beige) 45%, transparent);
+}
+
+/* Pressed / inset state — bevel flips */
+.performer-panel-card-window .arcana-win-btn:hover,
+.performer-panel-card-window .arcana-win-btn:active {
+  background: color-mix(in srgb, var(--onyx) 80%, var(--black));
+  border-color: #1a1a1a color-mix(in srgb, #fafae6 28%, transparent) color-mix(in srgb, #fafae6 28%, transparent) #1a1a1a;
+  box-shadow:
+    inset 1px 1px 0 var(--black),
+    inset -1px -1px 0 color-mix(in srgb, #fafae6 10%, transparent);
+  color: color-mix(in srgb, var(--beige) 70%, transparent);
+}
+
+/* Interactive button (flip ↻) — symbol stays bone, no green */
+.performer-panel-card-window button.arcana-win-btn {
+  color: color-mix(in srgb, var(--beige) 55%, transparent);
+}
+
+.performer-panel-card-window button.arcana-win-btn:hover,
+.performer-panel-card-window button.arcana-win-btn:active {
   color: var(--beige);
 }
 
@@ -1260,6 +1374,29 @@ body {
   text-transform: uppercase;
 }
 
+.performer-intro-instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: fit-content;
+  margin-top: auto;
+  color: color-mix(in srgb, var(--archive-silver) 85%, transparent);
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+}
+
+.performer-intro-instagram:hover,
+.performer-intro-instagram:focus-visible {
+  color: var(--rosewood);
+  outline: none;
+}
+
+.performer-intro-instagram-icon {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
 .performer-intro-motto {
   margin: 0;
   color: var(--slime-lime);
@@ -1312,4 +1449,66 @@ body {
   .archive-shell-detail-content > * {
     animation: none;
   }
+}
+
+/* ─── CTA button — simple 90s UI button ───────────────────────── */
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 4px;
+  border-top-color: #5a5a5a;
+  border-left-color: #3e3e3e;
+  border-bottom-color: #161616;
+  border-right-color: #1c1c1c;
+  outline: 1px solid var(--slime-lime);
+  outline-offset: 0;
+  background: #0a0a0a;
+  cursor: pointer;
+  text-decoration: none;
+  user-select: none;
+  box-shadow: none;
+}
+
+.cta-btn-label {
+  display: block;
+  padding: 0.65rem 1.25rem;
+  font-family: "Jacquard 24", var(--font-jacquard-24), serif;
+  font-size: 1.8rem;
+  letter-spacing: 0em;
+  color: var(--slime-lime);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.cta-btn:active {
+  border-top-color: #161616;
+  border-left-color: #1c1c1c;
+  border-bottom-color: #5a5a5a;
+  border-right-color: #3e3e3e;
+}
+
+.cta-btn:active .cta-btn-label {
+  transform: translate(1px, 1px);
+}
+
+.cta-btn:focus-visible {
+  outline: 2px solid var(--slime-lime);
+  outline-offset: 0;
+}
+
+.hero-cta-btn-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.hero-cta-btn-group .cta-btn {
+  width: 22rem;
+  max-width: min(90vw, 16rem);
 }

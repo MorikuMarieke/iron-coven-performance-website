@@ -31,23 +31,27 @@ export type ArcanaPerformer = {
   element: string;
   medium: string[];
   motto: string;
+  instagram: {
+    handle: string;
+    href: string;
+  };
 };
 
 export const performers: ArcanaPerformer[] = [
   {
     slug: "trixxxie",
-    archetype: "The Anarchist",
+    archetype: "The Disruptor",
     name: "Trixxxie",
     romanNumeral: "IX",
     symbol: "broken mirror",
     symbolSrc: "/images/arcana/Mirror%20Arcana.svg",
     portraitSrc: "/images/arcana/portraits/trixxxie.svg",
-    tarotCardSrc: "/images/arcana/tarot/the-anarchist.png",
+    tarotCardSrc: "/images/arcana/tarot/the-disruptor.png",
     subtitle:
       "A BREAKER OF RULES AND STRUCTURES. WILD SPIRIT, TRUTH SPEAKER, DISRUPTOR.",
     theme: "fractured identity · rebellion · distorted reflections",
     accent: {
-      ...arcanaAccents.anarchist,
+      ...arcanaAccents.disruptor,
       glow: "",
       text: "var(--beige)",
     },
@@ -63,6 +67,10 @@ export const performers: ArcanaPerformer[] = [
     element: "Chaos",
     medium: ["Chains", "Mirror"],
     motto: "I don't follow systems.\nI break them.",
+    instagram: {
+      handle: "@_trixxvie_",
+      href: "https://instagram.com/_trixxvie_",
+    },
   },
   {
     slug: "moth",
@@ -93,15 +101,19 @@ export const performers: ArcanaPerformer[] = [
     element: "Air",
     medium: ["Silk", "Hoop"],
     motto: "I shed, I shift,\nI become.",
+    instagram: {
+      handle: "@mothfaee",
+      href: "https://instagram.com/mothfaee",
+    },
   },
   {
-    slug: "elena",
+    slug: "dark-soul-dancer",
     archetype: "The Sorceress",
-    name: "Elena",
+    name: "Dark Soul Dancer",
     romanNumeral: "XI",
     symbol: "snake",
     symbolSrc: "/images/arcana/Snake%20Arcana.svg",
-    portraitSrc: "/images/arcana/portraits/elena.svg",
+    portraitSrc: "/images/arcana/portraits/dark-soul-dancer.svg",
     tarotCardSrc: "/images/arcana/tarot/the-sorceress.png",
     subtitle:
       "A WEAVER OF SHADOW AND SPELL. ANCIENT KNOWLEDGE, RITUAL POWER, FORBIDDEN ARTS.",
@@ -115,7 +127,7 @@ export const performers: ArcanaPerformer[] = [
     cardDescription:
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     longBio:
-      "Excepteur sint occaecat cupidatat non proident. Elena moves through the coven as living grimoire — each performance a working of shadow, incantation, and withheld power.",
+      "Excepteur sint occaecat cupidatat non proident. Dark Soul Dancer moves through the coven as living grimoire — each performance a working of shadow, incantation, and withheld power.",
     performanceDescription:
       "Ritual performance rooted in spellwork, serpentine movement, and the slow unfurling of arcane force.",
     role: "Sorceress",
@@ -123,6 +135,10 @@ export const performers: ArcanaPerformer[] = [
     element: "Shadow",
     medium: ["Pole", "Chains"],
     motto: "Knowledge is\na kind of spell.",
+    instagram: {
+      handle: "@dark.soul.dancer",
+      href: "https://instagram.com/dark.soul.dancer",
+    },
   },
   {
     slug: "annaestheesia",
@@ -153,5 +169,9 @@ export const performers: ArcanaPerformer[] = [
     element: "Energy",
     medium: ["Pole", "Hoop"],
     motto: "Strike once.\nChange everything.",
+    instagram: {
+      handle: "@annaestheesia",
+      href: "https://instagram.com/annaestheesia",
+    },
   },
 ];

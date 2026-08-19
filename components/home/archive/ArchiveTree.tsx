@@ -82,7 +82,12 @@ export function ArchiveTree({
                       onClick={() => onSelect(performer.slug)}
                     >
                       <FileGlyph />
-                      <span className="archive-tree-label">{performer.name}</span>
+                      <span
+                        className="archive-tree-label"
+                        style={selected ? { color: "var(--rosewood)" } : undefined}
+                      >
+                        {performer.name}
+                      </span>
                       {selected ? (
                         <span className="archive-tree-signal" aria-hidden="true" />
                       ) : null}

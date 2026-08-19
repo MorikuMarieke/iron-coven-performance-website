@@ -11,9 +11,9 @@ export function Socials() {
         <header className="mb-10 text-center md:mb-12">
           <h2
             id="socials-heading"
-            className="font-display text-3xl font-bold md:text-4xl"
+            className="font-unifraktur text-5xl md:text-6xl"
           >
-            Follow the circle
+            Follow the Coven
           </h2>
           <p className="mx-auto mt-3 max-w-lg font-mono uppercase text-white/45">
             Whispers, dates, and glimpses behind the veil

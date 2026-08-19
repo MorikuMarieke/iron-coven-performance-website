@@ -1,4 +1,5 @@
 import { type ArcanaPerformer } from "@/data/performers";
+import { InstagramIcon } from "@/components/ui/InstagramIcon";
 
 export function PerformerIntroPanel({ performer }: { performer: ArcanaPerformer }) {
   return (
@@ -21,6 +22,17 @@ export function PerformerIntroPanel({ performer }: { performer: ArcanaPerformer 
       <p className="performer-intro-bio">{performer.longBio}</p>
 
       <p className="performer-intro-performance">{performer.performanceDescription}</p>
+
+      <a
+        className="performer-intro-instagram font-mono"
+        href={performer.instagram.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${performer.name} on Instagram, ${performer.instagram.handle}`}
+      >
+        <InstagramIcon className="performer-intro-instagram-icon" />
+        <span>{performer.instagram.handle}</span>
+      </a>
     </div>
   );
 }

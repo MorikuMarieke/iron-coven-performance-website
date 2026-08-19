@@ -38,8 +38,16 @@ export function Performers() {
     <section
       id="iron-coven"
       aria-label="Iron Coven archive"
-      className="iron-coven-archive relative min-w-0 border-b border-[color:var(--archive-silver)]/25 bg-[color:var(--archive-black)] py-12 md:py-16"
+      className="iron-coven-archive relative min-w-0 border-b border-[color:var(--archive-silver)]/25 bg-[color:var(--archive-black)] pb-12 md:pb-16"
     >
+      <div className="archive-chain" aria-hidden="true">
+        <img
+          src="/images/graphics/chain-silver.png"
+          alt=""
+          width={1357}
+          height={64}
+        />
+      </div>
       <div className="section-shell">
         <div className="archive-shell">
           <aside className="archive-shell-nav">

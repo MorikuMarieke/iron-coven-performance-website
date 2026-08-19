@@ -10,7 +10,7 @@ export function Newsletter() {
       <div className="mx-auto max-w-2xl text-center">
         <h2
           id="newsletter-heading"
-          className="font-display mb-4 text-3xl font-bold md:text-4xl"
+          className="font-unifraktur mb-4 text-3xl md:text-4xl"
         >
           Enter the circle
         </h2>

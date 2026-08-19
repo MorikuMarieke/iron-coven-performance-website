@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CTAButton } from "@/components/ui/CTAButton";
+import { ChromeButton } from "@/components/ui/ChromeButton";
 import { event } from "@/data/event";
 
 function RitualSigil() {
@@ -20,10 +20,6 @@ function RitualSigil() {
   );
 }
 
-const ctaShared =
-  "w-full max-w-[14rem] whitespace-normal text-balance text-center justify-center sm:w-auto sm:flex-1 sm:min-w-[9rem] sm:max-w-[14rem] lg:flex-none lg:max-w-none";
-const ctaClass = `hero-cta-hover ${ctaShared} font-sans tracking-[0.2em] border-beige/90 text-black hover:border-slime-lime/60`;
-const ctaSecondaryClass = `hero-cta-hover hero-cta-secondary ${ctaShared} font-sans tracking-[0.2em] text-beige hover:text-beige`;
 
 export function Hero() {
   return (
@@ -93,17 +89,11 @@ export function Hero() {
             aria-hidden="true"
           />
 
-          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 p-[clamp(1rem,4vw,2rem)] sm:flex-row sm:flex-wrap sm:gap-4">
-            <CTAButton href="#" className={ctaClass}>
-              Book Tickets
-            </CTAButton>
-            <CTAButton
-              variant="secondary"
-              href="#newsletter"
-              className={ctaSecondaryClass}
-            >
-              Enter the Circle
-            </CTAButton>
+          <div className="absolute inset-0 z-10 flex items-center justify-center p-[clamp(1rem,4vw,2rem)]">
+            <div className="hero-cta-btn-group">
+              <ChromeButton href="#">Book Tickets</ChromeButton>
+              <ChromeButton href="#newsletter">Enter the Circle</ChromeButton>
+            </div>
           </div>
         </div>
       </div>

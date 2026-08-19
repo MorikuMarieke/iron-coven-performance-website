@@ -3,11 +3,11 @@ import type { ArcanaAccent } from "./performers";
 
 /** Arcana card accent tokens — mapped to the site palette in :root */
 export const arcanaAccents = {
-  anarchist: {
-    primary: "var(--arcana-anarchist)",
-    secondary: "var(--arcana-anarchist-muted)",
-    border: "var(--arcana-anarchist)",
-    panelBorder: "var(--arcana-anarchist-muted)",
+  disruptor: {
+    primary: "var(--arcana-disruptor)",
+    secondary: "var(--arcana-disruptor-muted)",
+    border: "var(--arcana-disruptor)",
+    panelBorder: "var(--arcana-disruptor-muted)",
   },
   shapeshifter: {
     primary: "var(--arcana-shapeshifter)",
